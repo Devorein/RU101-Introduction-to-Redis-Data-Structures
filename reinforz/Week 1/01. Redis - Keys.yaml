@@ -1,0 +1,276 @@
+topic: Keys
+subject: Redis
+questions:
+  - question: What can a key name be made of in redis?
+    answers:
+      - text: 0
+        explanation: Since key names are binary safe in redis, any binary sequence can be used as a key name
+    options:
+      - Any sequence of bytes
+      - ASCII characters only
+      - Alphanumeric and underscore
+      - Alphanumeric, excluding $
+      - Alphanumeric, but can't start with "system" of "sys"
+  - question: Are key names binary safe in redis ?
+    answers:
+      - text: 0
+        explanation: Any binary sequence can be used as a key in redis.
+    options:
+      - Yes
+      - No
+  - question: Which of the following are valid redis key name ?
+    answers:
+      - 0
+      - 1
+      - 2
+      - 3
+    options:
+      - foo
+      - 42
+      - 3.14
+      - 0xff
+  - question: Keys in redis can be up to how many megabytes in size ?
+    answers:
+      - 0
+    options:
+      - 512
+      - 256
+      - 128
+      - 64
+      - 32
+  - question: Does the concept of database exist in redis ?
+    answers:
+      - 0
+    options:
+      - No
+      - Yes
+  - question: Does all the key names occupy the same space in redis ?
+    answers:
+      - 0
+    options:
+      - Yes
+      - No
+  - question: Does redis separates the key names into separate spaces through buckets/collection ?
+    answers:
+      - 0
+    options:
+      - No
+      - Yes
+  - question: A logical database in redis is identified by a zero based index ?
+    answers:
+      - 0
+    options:
+      - Yes
+      - No
+  - question: The same key name can appear in multiple logical database ?
+    answers:
+      - 0
+    options:
+      - Yes
+      - No
+  - question: Redis cluster only supports which of the following database ?
+    answers:
+      - 0
+    options:
+      - 0
+      - 1
+      - 2
+      - 3
+  - question: Is the key name in redis case sensitive ?
+    answers:
+      - text: 0
+        explanation: Since the key name is a binary sequence, both uppercase and lowercase variants indicate different keys
+    options:
+      - Yes
+      - No
+  - question: Which of the following command provides a way to store a value for a key name?
+    answers:
+      - 0
+    options:
+      - set
+      - put
+      - store
+      - save
+  - question: Which of the following is the syntax of redis `set` command
+    answers:
+      - 0
+    options:
+      - "`set key value`"
+      - "`set value key`"
+      - "`set --value=value --key=key`"
+      - "`set -value=value -key=key`"
+  - question: Which of the following command provides a way to obtain a value for a key name?
+    answers:
+      - 0
+    options:
+      - get
+      - obtain
+      - retrieve
+      - restore
+  - question: Which of the following commands is used to get a list of all the keys in the redis database ?
+    answers:
+      - 0
+      - 1
+    options:
+      - keys
+      - scan
+      - retrieve
+      - allkeys
+  - question: Which of the following is true for the `keys` command
+    answers:
+      - text: 0
+        explanation: If your redis db contains millions of keys, it blocks the entire db until all the keys are iterated over.
+      - 1
+    options:
+      - Its blocking
+      - Its useful for debugging
+      - Safe for production
+  - question: Which of the following is true for the `scan` command
+    answers:
+      - text: 0
+        explanation: If your redis db contains millions of keys, it blocks the entire db until all the keys are iterated over.
+      - text: 1
+        explanation: A slot reference can be used to continue iteration
+      - 2
+    options:
+      - Its blocking, but iterates using a cursor
+      - It returns a slot reference
+      - Safe for production
+  - question: Write the command to find all the customer keys that begins with 1
+    answers:
+      - text: customer:1*
+        explanation: 1* matches all keys that starts with 1, for example 123 will match, but not 231
+  - question: Which of the following is a syntax of the keys command ?
+    answers:
+      - 0
+    options:
+      - keys pattern
+      - keys --pattern=pattern
+      - keys -pattern=pattern
+      - keys pattern count
+  - question: Which of the following is the syntax of the scan command ?
+    answers:
+      - text: 0
+        explanation: |
+          slot: Reference slot, required
+          pattern: pattern to match, optional
+          count: number of keys to return, optional
+    options:
+      - scan slot [MATCH pattern] [COUNT count]
+      - scan [MATCH pattern] [COUNT count]
+      - scan [COUNT count] [MATCH pattern]
+  - question: Use the scan command to scan for the `3` slot reference, in the `customer` database for all the keys that starts with 1, and return only 2
+    answers:
+      - scan 3 MATCH customer:1* COUNT 2
+  - question: Does increasing the count parameter in `scan` command increase the blocking time ?
+    answers:
+      - 0
+    options:
+      - True
+      - False
+  - question: Which of the following values will `scan` command return if it has no more keys to iterate ?
+    answers:
+      - 0
+    options:
+      - 0
+      - 1
+      - null
+      - false
+      - nil
+  - question: Which of the following is the syntax for the `DEL` command
+    answers:
+      - 0
+    options:
+      - DEL key [key ...]
+      - DEL key
+      - DEL --key=key1
+      - DEL -key=key1
+  - question: Does the `DEL` command perform a blocking operation ?
+    answers:
+      - 0
+    options:
+      - True
+      - False
+  - question: Which of the deletion command removes the memory associated with the key in an asynchronous way ?
+    answers:
+      - 0
+    options:
+      - UNLINK
+      - DEL
+      - REMOVE
+      - DELETE
+  - question: Which of the deletion command is a non blocking command ?
+    answers:
+      - 0
+    options:
+      - UNLINK
+      - DEL
+      - REMOVE
+      - DELETE
+  - question: Remove `customer:1000` in a blocking way
+    answers:
+      - del customer:1000
+  - question: Remove `customer:1000` in an asynchronous way
+    answers:
+      - unlink customer:1000
+  - question: What does the deletion commands return ?
+    answers:
+      - 0
+    options:
+      - Number of keys removed
+      - 0 for success, 1 for failure
+      - OK
+  - question: What is returned when you `get` a key that does not exist ?
+    answers:
+      - nil
+  - question: |
+      What will the output of line 2 
+      ```shell
+      1. set customer:1000 John
+      2. del customer:1200
+      ```
+    answers:
+      - 0
+  - question: Does the data have to exist before you can manipulate it ?
+    answers:
+      - 0
+    options:
+      - Nope
+      - Yes
+  - question: Does the `set` command create the key if it doesn't exist ?
+    answers:
+      - 0
+    options:
+      - True
+      - False
+  - question: Which command can be used to check if a key exists ?
+    answers:
+      - exists
+  - question: What is the format of the return value for `exists` command ?
+    answers:
+      - 0
+    options:
+      - 0 if it doesn't exist, 1 if it exists
+      - 1 if it doesn't exist, 0 if it exists
+      - nil if it doesn't exist, OK if it exists
+  - question: Which of the following is the syntax of the `set` command ?
+    answers:
+      - text: 0
+        explanation: |
+          NX: set key if only if it doesn't exist
+          XX: set key if only it exists
+    options:
+      - set key value [EX seconds] [PX milliseconds] [NX|XX]
+      - set key value [EX seconds] [NX|XX] [PX milliseconds]
+      - set key value [NX|XX] [EX seconds] [PX milliseconds]
+      - set key value [NX|XX] [PX milliseconds] [EX seconds]
+  - question: Write the command to set `key1` to `value1` if only it doesn't exist
+    answers:
+      - set key1 value1 NX
+  - question: Which of the following value is returned if the key has not been set with a value in the `set` command
+    answers:
+      - 0
+    options:
+      - nil
+      - 0
+      - OK
