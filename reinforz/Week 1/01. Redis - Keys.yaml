@@ -28,7 +28,7 @@ questions:
       - foo
       - 42
       - 3.14
-      - 0xff
+      - "0xff"
   - question: Keys in redis can be up to how many megabytes in size ?
     answers:
       - 0
@@ -136,7 +136,7 @@ questions:
       - Its blocking, but iterates using a cursor
       - It returns a slot reference
       - Safe for production
-  - question: Write the command to find all the customer keys that begins with 1
+  - question: Write the pattern to find all the customer keys that begins with 1
     answers:
       - text: customer:1*
         explanation: 1* matches all keys that starts with 1, for example 123 will match, but not 231
@@ -157,8 +157,8 @@ questions:
           count: number of keys to return, optional
     options:
       - scan slot [MATCH pattern] [COUNT count]
-      - scan [MATCH pattern] [COUNT count]
-      - scan [COUNT count] [MATCH pattern]
+      - scan slot [MATCH pattern]
+      - scan slot [COUNT count]
   - question: Use the scan command to scan for the `3` slot reference, in the `customer` database for all the keys that starts with 1, and return only 2
     answers:
       - scan 3 MATCH customer:1* COUNT 2
@@ -166,15 +166,15 @@ questions:
     answers:
       - 0
     options:
-      - True
-      - False
+      - Yes
+      - No
   - question: Which of the following values will `scan` command return if it has no more keys to iterate ?
     answers:
       - 0
     options:
       - 0
       - 1
-      - null
+      - "null"
       - false
       - nil
   - question: Which of the following is the syntax for the `DEL` command
@@ -241,8 +241,8 @@ questions:
     answers:
       - 0
     options:
-      - True
-      - False
+      - Yes
+      - No
   - question: Which command can be used to check if a key exists ?
     answers:
       - exists
@@ -261,9 +261,9 @@ questions:
           XX: set key if only it exists
     options:
       - set key value [EX seconds] [PX milliseconds] [NX|XX]
-      - set key value [EX seconds] [NX|XX] [PX milliseconds]
-      - set key value [NX|XX] [EX seconds] [PX milliseconds]
-      - set key value [NX|XX] [PX milliseconds] [EX seconds]
+      - set key value [EX seconds] [PX milliseconds]
+      - set key value [NX|XX]
+      - set key value [PX milliseconds] [EX seconds]
   - question: Write the command to set `key1` to `value1` if only it doesn't exist
     answers:
       - set key1 value1 NX
