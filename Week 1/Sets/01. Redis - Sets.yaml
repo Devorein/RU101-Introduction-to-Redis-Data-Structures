@@ -18,8 +18,7 @@ questions:
       - Union
       - Intersection
       - Difference
-      - Left Difference
-      - Right Difference
+      - Non Intersection
   - question: Redis stores set values as ?
     answers:
       - 0
@@ -160,3 +159,35 @@ questions:
     options:
       - No
       - Yes
+  - question: Which command is used to perform set differences
+    answers:
+      - sdiff
+  - question: Which command is used to perform set intersection
+    answers:
+      - sinter
+  - question: Which command is used to perform set union
+    answers:
+      - sunion
+  - question: Does the performance of the set operations like `union` depends on the cardinality of the set ?
+    answers:
+      - 0
+    options:
+      - Yes
+      - No
+  - question: Write the command to get the number of members of a set
+    answers:
+      - scard
+  - question: Get the number of members of `set`
+    answers:
+      - scard set
+  - question: Find the common members between `set1` and `set2`
+    answers:
+      - sinter set1 set2
+  - question: Which of the following is the syntax of the set union command
+    answers:
+      - text: 0
+        explanation: Passing a single set as an argument is also valid operation
+    options:
+      - sunion key1 [key...]
+      - sunion key1 key2 [key...]
+      - sunion key1 key2
