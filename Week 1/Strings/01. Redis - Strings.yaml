@@ -77,7 +77,7 @@ questions:
           modifiers:
             - IC
   - question: |
-      What will the following command show >
+      What will the following command show ?
       ```shell
       set key1 1
       type key1
@@ -88,7 +88,7 @@ questions:
     answers:
       - object encoding key1
   - question: |
-      What will the following command show >
+      What will the following command show ?
       ```shell
       set key1 1
       object encoding key1
@@ -96,7 +96,7 @@ questions:
     answers:
       - int
   - question: |
-      What will the following command show >
+      What will the following command show ?
       ```shell
       set key1 "Hello World"
       object encoding key1
@@ -105,7 +105,7 @@ questions:
       - text: embstr
         explanation: embstr represents a text value
   - question: |
-      What will the following command show >
+      What will the following command show ?
       ```shell
       set key1 1.5
       object encoding key1

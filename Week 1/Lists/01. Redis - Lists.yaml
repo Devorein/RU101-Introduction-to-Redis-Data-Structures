@@ -71,7 +71,7 @@ questions:
       - rpush
   - question: Add values `val1` and `val2` to the list `list1` from the right
     answers:
-      - lpush list1 val1 val2
+      - rpush list1 val1 val2
   - question: What does the push commands return ?
     answers:
       - 0
@@ -274,7 +274,7 @@ questions:
       - lset key value index
       - lset value key index
       - lset value index key
-  - question: Set the element at the last index of `list` to last
+  - question: Set the element at the last index of `list` to `last`
     answers:
       - - text: lset list -1 last
         - text: lset list -1 "last"
@@ -315,3 +315,27 @@ questions:
   - question: Write the command to keep only the first 3 items of `list`
     answers:
       - ltrim list 0 2
+  - question: |
+      What will be the output of line 3
+
+      ```shell
+      1 rpush list1 1 2 3 4
+      2 lpop list1
+      3 lindex list1 1
+      ```
+    answers:
+      - 3
+  - question: |
+      What will be the output the following code
+
+      ```shell
+      1 set list1 a
+      2 lpush list1 1 2 3
+      ```
+    answers:
+      - text: 0
+        explanation: An error will be thrown since the datatype of the lpush command is acted on a string and not a list
+    options:
+      - Error
+      - "A list containing a 1 2 3"
+      - "A list containing 1 2 3"

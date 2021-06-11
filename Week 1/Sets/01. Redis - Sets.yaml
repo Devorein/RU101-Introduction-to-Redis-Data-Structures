@@ -1,0 +1,162 @@
+topic: Sets
+subject: Redis
+questions:
+  - question: What best describes a set in redis
+    answers:
+      - 0
+    options:
+      - Unordered collection of unique strings
+      - Unordered collection of duplicate strings
+      - Ordered collection of duplicate strings
+      - Ordered collection of unique strings
+  - question: Which of the following operations can be performed in a set in redis
+    answers:
+      - 0
+      - 1
+      - 2
+    options:
+      - Union
+      - Intersection
+      - Difference
+      - Left Difference
+      - Right Difference
+  - question: Redis stores set values as ?
+    answers:
+      - 0
+    type: MS
+    options:
+      - strings
+      - numbers
+      - boolean
+      - lists
+      - nested sets
+  - question: Does redis support nested sets
+    answers:
+      - 0
+    options:
+      - No
+      - Yes
+  - question: Which command is used to add new members to the set
+    answers:
+      - sadd
+  - question: Which of the following is the syntax of the `sadd` command
+    answers:
+      - 0
+    options:
+      - sadd key member [member...]
+      - sadd key member
+      - sadd member key
+  - question: What does the set command return
+    answers:
+      - 0
+    options:
+      - New members added to the set
+      - Parameter length
+      - Current length of the set
+  - question: |
+      What will be the output of line 2
+
+      ```shell
+      1 sadd set 1 2 3
+      2 sadd set 2 3 4
+      ```
+    answers:
+      - text: 1
+        explanation: Since only one new member 4 is added to the set, 1 is the answer
+  - question: Add members `1`, `2` and `3` to `set`
+    answers:
+      - sadd set 1 2 3
+  - question: Which command can be used to retrieve all elements of a set
+    answers:
+      - smembers
+  - question: Get all the elements of `set`
+    answers:
+      - smembers set
+  - question: Which command can be used for cursor based searching of set elements
+    answers:
+      - sscan
+  - question: Which of the following is the syntax of the `sscan` command
+    answers:
+      - 0
+    options:
+      - sscan key cursor [MATCH pattern] [COUNT count]
+      - sscan key [MATCH pattern] [COUNT count]
+      - sscan key cursor [COUNT count]
+      - sscan key cursor [MATCH pattern]
+  - question: Scan for all the members of `set` from cursor `1` that matches the pattern `1*` and limit to 1 result
+    answers:
+      - sscan set 1 match 1* count 1
+  - question: Write the `smembers` equivalent command with `sscan` for `set`
+    answers:
+      - sscan set 0 match *
+  - question: Which command is used to check if a member exists in a set
+    answers:
+      - sismember
+  - question: Which of the following is the syntax of the `sismember` command
+    answers:
+      - 0
+    options:
+      - sismember key member
+      - sismember key value [member...]
+      - sismember member key
+  - question: Write the command to see if member `1` exists in `set`
+    answers:
+      - sismember set 1
+  - question: What is the format for the return value of the `sismember` command
+    answers:
+      - 0
+    options:
+      - 1 if exists, 0 if it doesn't
+      - 1 if exists, nil if it doesn't
+      - 1 if exists, error if it doesn't
+      - OK if exists, nil if it doesn't
+      - 0 if exists, 1 if it doesn't
+  - question: Which command is used to remove specific elements from a set
+    answers:
+      - srem
+  - question: Which of the following is the syntax of the `srem` command
+    answers:
+      - 0
+    options:
+      - srem key member [member...]
+      - srem key member
+      - srem member key
+  - question: What is the format for the return value of the `srem` command
+    answers:
+      - 0
+    options:
+      - Number of members removed
+      - 1 if successful, error if unsuccessful
+      - OK if successful, nil if unsuccessful
+      - 1 if successful, 0 if unsuccessful
+      - Current length of set
+  - question: Remove the members `1` and `2` from `set`
+    answers:
+      - srem set 1 2
+  - question: Which command is used to remove a random element from the set
+    answers:
+      - spop
+  - question: Which of the following is the syntax of the `srem` command
+    answers:
+      - 0
+    options:
+      - spop key count
+      - spop key
+      - spop key index
+      - spop key index count
+  - question: Remove two random members from `set`
+    answers:
+      - spop set 2
+  - question: Can a Set contain duplicate values?
+    answers:
+      - 0
+    options:
+      - No
+      - Yes
+  - question: Can you retrieve a value in a Set by position?
+    answers:
+      - text: 0
+        explanation: Set is an unordered collection of strings, thus there is no inherent position of a member of a set
+    options:
+      - No
+      - Yes
