@@ -121,10 +121,10 @@ questions:
       - PTTLDEL
   - question: Use the `set` command to set `key1` to `value1` with ttl of 50 seconds. (Don't set it in milliseconds)
     answers:
-      - set key1 value1 EX 50
+      - set key1 value1 ex 50
   - question: Use the `set` command to set `key1` to `value1` with ttl of 50 milliseconds. (Don't set it in seconds)
     answers:
-      - set key1 value1 PX 50
+      - set key1 value1 px 50
   - question: Update the ttl of the `key1` key to 1 second using the milliseconds format
     answers:
       - pexpire key1 1000

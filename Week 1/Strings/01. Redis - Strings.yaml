@@ -1,0 +1,191 @@
+topic: Strings
+subject: Redis
+questions:
+  - question: Can images, videos, documents and sounds be stored in redis as binary values ?
+    answers:
+      - 0
+    options:
+      - Yes
+      - No
+  - question: Can redis be used as cache ?
+    answers:
+      - 0
+    options:
+      - Yes
+      - No
+  - question: Can redis be used to store serialized json ?
+    answers:
+      - 0
+    options:
+      - Yes
+      - No
+  - question: Is it possible to increment or decrement a number stored as a string in redis ?
+    answers:
+      - 0
+    options:
+      - Yes
+      - No
+  - question: What is the memory limit in megabytes of a redis value?
+    options:
+      - 512
+      - 256
+      - 128
+      - 64
+      - 32
+    answers:
+      - 0
+  - question: Does redis have any information of what the data type of the stored value is ?
+    answers:
+      - 0
+    options:
+      - Yes
+      - No
+  - question: Which of the following commands are used to manipulate numbers in redis ?
+    answers:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+    options:
+      - incrby
+      - incr
+      - decr
+      - decrby
+      - incrbyfloat
+      - decrbyfloat
+  - question: Store the key `customer 1000` to value 1
+    answers:
+      - - text: set "customer 1000" 1
+        - text: set 'customer 1000' 1
+  - question: Increment the key `key1` by 1
+    answers:
+      - - text: incr key1
+        - text: incrby key1 1
+  - question: Does performing a numeric operation on a string stores the value as number ?
+    answers:
+      - 0
+    options:
+      - No
+      - Yes
+  - question: Increment the key `key1` by 2
+    answers:
+      - incrby key1 2
+  - question: Which command can be used to get the datatype of the key ?
+    answers:
+      - - text: type
+          modifiers:
+            - IC
+  - question: |
+      What will the following command show >
+      ```shell
+      set key1 1
+      type key1
+      ```
+    answers:
+      - string
+  - question: Check the encoding of the value stored in key `key1`
+    answers:
+      - object encoding key1
+  - question: |
+      What will the following command show >
+      ```shell
+      set key1 1
+      object encoding key1
+      ```
+    answers:
+      - int
+  - question: |
+      What will the following command show >
+      ```shell
+      set key1 "Hello World"
+      object encoding key1
+      ```
+    answers:
+      - text: embstr
+        explanation: embstr represents a text value
+  - question: |
+      What will the following command show >
+      ```shell
+      set key1 1.5
+      object encoding key1
+      ```
+    answers:
+      - embstr
+  - question: |
+      What will the following command show ?
+
+      ```shell
+      incr key1
+      ```
+    answers:
+      - 1
+  - question: |
+      What will the following command show ?
+
+      ```shell
+      set key1 2
+      incr key1
+      ```
+    answers:
+      - 3
+  - question: |
+      What will the following command show ?
+
+      ```shell
+      incrby key1 5
+      ```
+    answers:
+      - 5
+  - question: |
+      What will the following command show ?
+
+      ```shell
+      set key1 2
+      incrby key1 5
+      ```
+    answers:
+      - 7
+  - question: Decrement the value of `key1` key by 2
+    answers:
+      - - text: decrby key1 2
+        - text: incrby key1 -2
+  - question: Increment the float stored in key `key1` by 2.5
+    answers:
+      - incrbyfloat key1 2.5
+  - question: Can the content of the string be changed to any datatype at any point ?
+    answers:
+      - 0
+    options:
+      - Yes
+      - No
+  - question: |
+      What will the following command show ?
+
+      ```shell
+      set key1 "Hello World"
+      incrby key1 5
+      ```
+    options:
+      - Throws an error
+      - 0
+      - -1
+      - OK
+      - nil
+    answers:
+      - 0
+  - question: Does numeric operations in redis work on text data types?
+    answers:
+      - 0
+    options:
+      - No
+      - Yes
+  - question: What can the `INCR` or `DECR` command work on?
+    type: MS
+    answers:
+      - 0
+    options:
+      - Integers
+      - Text
+      - Floating point numbers
+      - Binary data
