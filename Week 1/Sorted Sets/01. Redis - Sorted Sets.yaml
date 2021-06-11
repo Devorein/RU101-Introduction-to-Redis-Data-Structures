@@ -1,0 +1,242 @@
+topic: Sorted Sets
+subject: Redis
+questions:
+  - question: What makes sorted sets different that a regular set ?
+    answers:
+      - 0
+    options:
+      - A score is associated with each member of the sorted set
+      - Can contain duplicate members
+      - Ordered collection
+  - question: What is the datatype of the score of a sorted set member
+    answers:
+      - 0
+    options:
+      - Floating point number
+      - integer number
+      - String
+  - question: If two members have the same score, how is the tie broken ?
+    answers:
+      - 0
+    options:
+      - Based on the lexical order of the members
+      - Based on which member was added first
+      - Based on which member reached the score first
+  - question: Which of the following set commands are also available in a sorted set
+    answers:
+      - 0
+      - 1
+    options:
+      - union
+      - intersection
+      - difference
+  - question: Are sorted sets nestable ?
+    answers:
+      - 0
+    options:
+      - No
+      - Yes
+  - question: Which command is used to add a member to a sorted set ?
+    answers:
+      - zadd
+  - question: Which of the following is the syntax of the `zadd` command
+    answers:
+      - 0
+    options:
+      - zadd key [NX|XX] [CH] [INCR] score member [score member...]
+      - zadd key score member [score member...] [NX|XX] [CH] [INCR]
+      - zadd key score member [score member...] [NX|XX] [INCR]
+      - zadd key score member [score member...] [NX|XX]
+  - question: How is the sorted set ordered ?
+    answers:
+      - 0
+    options:
+      - Based on its score and then by member
+      - Based on its score
+      - Based on its member
+  - question: What is the return value of the `zadd` command
+    answers:
+      - 0
+    options:
+      - Number of new members added to the sorted set
+      - Length of the sorted set
+      - OK
+      - 1 if successful, 0 for failure
+  - question: Add the members members `a` with score `1` and `b` with score `2` to the sorted set `ss`
+    answers:
+      - zadd ss 1 a 2 b
+  - question: Add the members members `a` with score `1` and `b` with score `2` to the sorted set `ss` if they don't already exist
+    answers:
+      - zadd ss nx 1 a 2 b
+  - question: What does the ch argument in `zadd` signify
+    answers:
+      - 0
+    options:
+      - Number of members changed
+      - Number of members added
+      - Number of members
+  - question: Which command is used to get the members of a sorted set
+    answers:
+      - zrange
+  - question: What is the syntax of the `zrange` command ?
+    answers:
+      - 0
+    options:
+      - zrange key start stop [WITHSCORES]
+      - zrange key start stop
+      - zrange key stop start
+      - zrange key stop start [WITHSCORES]
+  - question: Get all the members of the sorted set `ss`
+    answers:
+      - zrange ss 0 -1
+  - question: Get all the members of the sorted set `ss` with its scores
+    answers:
+      - zrange ss 0 -1 withscores
+  - question: What is the order of the `zrange` command ?
+    answers:
+      - 0
+    options:
+      - Ascending order based on score
+      - Ascending order based on member
+      - Descending order based on member
+      - Descending order based on score
+  - question: Which command is used to get the members of a sorted set in reverse order
+    answers:
+      - zrevrange
+  - question: Get all the members of the sorted set `ss` in desc order with its scores
+    answers:
+      - zrevrange ss 0 -1 withscores
+  - question: Which command is used to get the rank of a member within a sorted set in ascending order of score
+    answers:
+      - zrank
+  - question: Which command is used to get the rank of a member within a sorted set in descending order of score
+    answers:
+      - zrevrank
+  - question: Write the command to get the rank of the member `b` in ascending order in the sorted set `ss`
+    answers:
+      - zrank ss b
+  - question: Write the command to get the rank of the member `b` in descending order in the sorted set `ss`
+    answers:
+      - zrevrank ss b
+  - question: Which of the following is the correct syntax of the `zrank` command ?
+    answers:
+      - 0
+    options:
+      - zrank key member
+      - zrank key member [member...]
+      - zrank member key
+  - question: Which command is used to get the score associated with a member
+    answers:
+      - zscore
+  - question: Which of the following is the correct syntax of the `zscore` command ?
+    answers:
+      - 0
+    options:
+      - zscore key member
+      - zscore key member [member...]
+      - zscore member key
+  - question: Get the score of the member `a` in the sorted set `ss`
+    answers:
+      - zscore ss a
+  - question: Which command is used to count the members of a sorted set with a range of score
+    answers:
+      - zcount
+  - question: Which of the following is the syntax of the `zcount` command
+    answers:
+      - zcount key min max
+      - zcount key max min
+      - zcount key
+  - question: Get the number of members of the sorted set `ss` within the score `1` and 3
+    answers:
+      - zcount ss 1 3
+  - question: Which command can be used to get the members of a sorted set within a range of score
+    answers:
+      - zrangebyscore
+  - question: Get all the members of the sorted set `ss` within the score range `1` and `2`
+    answers:
+      - zrangebyscore ss 1 2
+  - question: Which of the following is the syntax of the `zrangebyscore` command
+    answers:
+      - 0
+    type: MS
+    options:
+      - zrangebyscore key min max [WITHSCORES] [LIMIT offset count]
+      - zrangebyscore key min max [LIMIT offset count]
+      - zrangebyscore key min [LIMIT offset count]
+      - zrangebyscore key max [LIMIT offset count]
+      - zrangebyscore key min max [WITHSCORES]
+  - question: Get all the members of the sorted set `ss` within the score range 0-2, by getting their scores and limit the value to 2 from offset 1
+    answers:
+      - zrangebyscore ss 0 2 withscores limit 1 2
+  - question: Which command is used to remove members from a sorted set
+    answers:
+      - zrem
+  - question: Remove the members `a` and `b` from the sorted set `ss`
+    answers:
+      - zrem ss a b
+  - question: Which of the following is the syntax for the `zrem` command
+    answers:
+      - 0
+    options:
+      - zrem key member [member...]
+      - zrem key member
+      - zrem member key
+      - zrem member [member...] key
+  - question: Which of the following commands are used to remove elements from a sorted set
+    answers:
+      - 0
+      - 1
+      - 2
+      - 3
+    options:
+      - zrem
+      - zremrangebylex
+      - zremrangebyrank
+      - zremrangebyscore
+      - zremrange
+  - question: Which of the following is correct ?
+    answers:
+      - 0
+      - 1
+      - 2
+      - 3
+    options:
+      - "`zrem` removes the specific members"
+      - "`zremrangebylex` removes the specific members within lex range"
+      - "`zremrangebyrank` removes the specific members within rank range"
+      - "`zremrangebyscore` removes the specific members within score range"
+      - "`zremrange` removes the specific members within rank range"
+  - question: Is rank of a member zero based ?
+    answers:
+      - 0
+    options:
+      - Yes
+      - No
+  - question: |
+      What is the rank of `b`
+
+      ```shell
+      zadd q-1 10 a 20 b 30 c 40 d
+      ```
+    answers:
+      - text: 1
+        explanation: By default, ranking is based on the ascending order of score and starts from zeroth index. So 0 is a, 1 is b and so on
+  - question: Can members be added to a Sorted Set with the same score?
+    answers:
+      - 0
+    options:
+      - Yes
+      - No
+  - question: Can elements of a Sorted Set have the same Rank?
+    answers:
+      - 0
+    options:
+      - No
+      - Yes
+  - question: Can you have two elements in a Sorted Set with the same value but different rank or score?
+    answers:
+      - text: 0
+        explanation: Since its a set, there can't be any duplicate values
+    options:
+      - No
+      - Yes

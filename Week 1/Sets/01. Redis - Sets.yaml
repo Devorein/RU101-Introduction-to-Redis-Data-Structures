@@ -45,7 +45,7 @@ questions:
       - sadd key member [member...]
       - sadd key member
       - sadd member key
-  - question: What does the set command return
+  - question: What does the `sadd` command return
     answers:
       - 0
     options:
@@ -65,13 +65,13 @@ questions:
   - question: Add members `1`, `2` and `3` to `set`
     answers:
       - sadd set 1 2 3
-  - question: Which command can be used to retrieve all elements of a set
+  - question: Which command can be used to retrieve all members of a set
     answers:
       - smembers
-  - question: Get all the elements of `set`
+  - question: Get all the members of `set`
     answers:
       - smembers set
-  - question: Which command can be used for cursor based searching of set elements
+  - question: Which command can be used for cursor based searching of set members
     answers:
       - sscan
   - question: Which of the following is the syntax of the `sscan` command
@@ -110,7 +110,7 @@ questions:
       - 1 if exists, error if it doesn't
       - OK if exists, nil if it doesn't
       - 0 if exists, 1 if it doesn't
-  - question: Which command is used to remove specific elements from a set
+  - question: Which command is used to remove specific members from a set
     answers:
       - srem
   - question: Which of the following is the syntax of the `srem` command
@@ -135,7 +135,7 @@ questions:
   - question: Which command is used to remove a random element from the set
     answers:
       - spop
-  - question: Which of the following is the syntax of the `srem` command
+  - question: Which of the following is the syntax of the `spop` command
     answers:
       - 0
     options:
@@ -191,3 +191,14 @@ questions:
       - sunion key1 [key...]
       - sunion key1 key2 [key...]
       - sunion key1 key2
+  - question: |
+      What is the output of line 4
+
+      ```shell
+      1 sadd set1 1 2 3 4 5 6
+      2 sadd set2 3 4 5
+      3 sadd set3 1 2 3 5
+      4 sdiff set1 set2 set3
+      ```
+    answers:
+      - 6
