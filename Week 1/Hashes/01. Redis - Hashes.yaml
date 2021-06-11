@@ -41,7 +41,7 @@ questions:
     answers:
       - 0
     options:
-      - "`hdel key field [value ...]`"
+      - "`hdel key field [field ...]`"
       - "`hdel key field`"
       - "`hdel key1 field key2 field`"
   - question: Which command can be used to increment a floating point value of a hash field ?
@@ -128,9 +128,11 @@ questions:
   - question: Get the field `name` of the hash stored in `player:1` key
     answers:
       - hget player:1 name
-  - question: Get all the fields of the hash stored in `player:1` key
+  - question: Get all the key/value pairs of the hash stored in `player:1` key
     answers:
       - hgetall player:1
+    hints:
+      - Its a variation of the `hget` command
   - question: Update the `name` field of `player:1` to "Player One"
     answers:
       - hset player:1 name "Player One"
@@ -167,7 +169,8 @@ questions:
       - hgetall
   - question: Which of the following hash commands have Big O notation of O(n) ?
     answers:
-      - 0
+      - text: 0
+        explanation: Since `hgetall` returns all the key value pairs of the hash, it depends on the number of elements there is in the hash
     type: MS
     options:
       - hgetall
