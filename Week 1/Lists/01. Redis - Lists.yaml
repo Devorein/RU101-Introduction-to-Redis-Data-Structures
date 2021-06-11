@@ -1,0 +1,317 @@
+topic: Lists
+subject: Redis
+questions:
+  - question: What best describes a list in redis ?
+    answers:
+      - 0
+    options:
+      - Ordered collection of strings
+      - key/value pairs of strings
+      - Unique collection of strings
+  - question: Are duplicate values allowed in a redis list ?
+    answers:
+      - 0
+    options:
+      - Yes
+      - No
+  - question: Redis provides ways to remove/add elements at both ends of a list ?
+    answers:
+      - 0
+    options:
+      - Yes
+      - No
+  - question: Redis provides ways to add/remove elements in reference to another element in a list ?
+    answers:
+      - 0
+    options:
+      - Yes
+      - No
+  - question: Redis stores list values as ?
+    answers:
+      - 0
+    type: MS
+    options:
+      - strings
+      - numbers
+      - boolean
+      - lists
+      - nested hashes
+  - question: Does redis provide nested lists ?
+    answers:
+      - 0
+    options:
+      - No
+      - Yes
+  - question: Internally redis stores lists using which of the following data structure ?
+    answers:
+      - 0
+    type: MS
+    options:
+      - doubly linked lists
+      - singly linked lists
+      - stacks
+      - queues
+      - graphs
+  - question: Which of the following operations can be performed in O(1) time in redis lists ?
+    answers:
+      - text: 0
+        explanation: Adding elements can be done in constant time since internally redis uses a linked list to represent a list
+      - text: 1
+        explanation: Removing elements can be done in constant time since internally redis uses a linked list to represent a list
+    options:
+      - Adding elements to either end of the list
+      - Removing elements from either end of the list
+      - Removing elements from middle of the list
+      - Adding elements to middle of the list
+  - question: Which command is used to add an item to the left of the list ?
+    answers:
+      - lpush
+  - question: Which command is used to add an item to the right of the list ?
+    answers:
+      - rpush
+  - question: Add values `val1` and `val2` to the list `list1` from the right
+    answers:
+      - lpush list1 val1 val2
+  - question: What does the push commands return ?
+    answers:
+      - 0
+    options:
+      - Length of the list
+      - Number of items added
+      - OK
+      - nil
+  - question: |
+      What will the following command output
+
+      ```shell
+      lpush list1 val1
+      type list1
+      ```
+    answers:
+      - list
+  - question: |
+      What will the following command output
+
+      ```shell
+      lpush list1 val1
+      object encoding list1
+      ```
+    answers:
+      - quicklist
+  - question: Which of the following is the syntax of the `lpush` command
+    answers:
+      - 0
+    options:
+      - lpush key value [value ...]
+      - lpush key value
+      - lpush value key
+      - lpush value1 key1 value2 key2
+  - question: Which command is used to remove elements from the right of a list ?
+    answers:
+      - rpop
+  - question: Which command is used to remove elements from the left of a list ?
+    answers:
+      - lpop
+  - question: Which of the following is the syntax of the `lpop` command
+    answers:
+      - text: 0
+        explanation: "`lpop` only supports removing the single leftmost element from the list"
+    options:
+      - lpop key
+      - lpop key value
+      - lpop key value count
+      - lpop key count
+  - question: Which command is used to get the length of list
+    answers:
+      - llen
+  - question: |
+      What will the following code output?
+
+      ```shell
+      lpush list1 1 2 3 4
+      rpush list1 5 6 7
+      lrange list1 0 -1
+      ```
+    answers:
+      - text: 0
+        explanation: "`lpush` command starts adding items from right to left, while `rpush` command starts adding items from left to right"
+    options:
+      - 4 3 2 1 5 6 7
+      - 1 2 3 4 5 6 7
+      - 1 2 3 4 7 6 5
+      - 4 3 2 17 6 5
+  - question: Which command is used to get the items of a list ?
+    answers:
+      - lrange
+  - question: Which of the following is the syntax of the `lrange` command
+    answers:
+      - 0
+    options:
+      - lrange key start stop
+      - lrange start stop key
+      - lrange key start
+      - lrange key stop
+  - question: Write the command to get all the items from the list `list1`
+    answers:
+      - lrange list1 0 -1
+  - question: |
+      What will the following code output?
+
+      ```shell
+      lpush list1 1 2 3 4
+      lrange list1 0 2
+      ```
+    answers:
+      - text: 0
+        explanation: Both start and stop index are inclusive
+    options:
+      - 4 3 2
+      - 4 3
+      - 3 2
+      - 3
+  - question: Does redis list support negative indexing ?
+    answers:
+      - 0
+    options:
+      - Yes
+      - No
+  - question: Which index is used to indicate the last index of the list in negative form ?
+    answers:
+      - -1
+  - question: |
+      What will the following code output?
+
+      ```shell
+      lpush list1 1 2 3 4
+      lrange list1 0 -2
+      ```
+    answers:
+      - 0
+    options:
+      - 4 3 2
+      - 4 3
+      - 1 2 3
+      - 1 2
+  - question: Which of the following commands are used to implement stack using a redis list
+    answers:
+      - text: 0
+        explanation: Adding elements to the left means adding to the start of the list/stack
+      - text: 1
+        explanation: Removing elements from the left means removing from the start of the list/stack
+    options:
+      - lpush
+      - lpop
+      - rpush
+      - rpop
+  - question: Which of the following commands are used to implement queue using a redis list
+    answers:
+      - text: 0
+        explanation: Adding elements to the right means adding to the end of the list/queue
+      - text: 1
+        explanation: Removing elements from the left means removing from the start of the list/queue
+    options:
+      - rpush
+      - lpop
+      - rpop
+      - lpush
+  - question: What does the pop commands returns ?
+    answers:
+      - 0
+    options:
+      - Item that was removed
+      - 1
+      - Number of items removed
+      - Current length of the list
+      - nil
+  - question: Which command is used to return the element at a specified index
+    answers:
+      - lindex
+  - question: Which of the following is the syntax of the `lindex` command
+    answers:
+      - 0
+    options:
+      - "`lindex key index`"
+      - "`lindex index key`"
+      - "`lindex key index1 index2`"
+      - "`lindex key value`"
+  - question: Which command is used to insert an item before or after a pivot in list
+    answers:
+      - linsert
+  - question: Which of the following is the syntax of the `linsert` command
+    answers:
+      - 0
+    options:
+      - "`linsert key before|after pivot value`"
+      - "`linsert key before|after value pivot`"
+      - "`linsert key pivot value before|after`"
+      - "`linsert key value pivot before|after`"
+  - question: What does the `linsert` command return ?
+    answers:
+      - 0
+    options:
+      - Current length of the list
+      - 1
+      - OK
+      - nil
+      - Index of the newly inserted item
+  - question: What does the `linsert` command return if the pivot can't be found ?
+    answers:
+      - -1
+  - question: Insert the item `1` to the left of `2` in the list `list1`
+    answers:
+      - linsert list1 before 2 1
+  - question: Insert the item `2` to the right of `1` in the list `list1`
+    answers:
+      - linsert list1 after 1 2
+  - question: Which command is used to store a value at a specified index in a list
+    answers:
+      - lset
+  - question: Which of the following is the syntax of the `lset` command
+    answers:
+      - 0
+    options:
+      - lset key index value
+      - lset key value index
+      - lset value key index
+      - lset value index key
+  - question: Set the element at the last index of `list` to last
+    answers:
+      - - text: lset list -1 last
+        - text: lset list -1 "last"
+  - question: What does the `lset` command return if the index is out of range ?
+    answers:
+      - 0
+    options:
+      - Throws an error
+      - 0
+      - nil
+      - -1
+  - question: What does the `lset` command return for successful operation ?
+    answers:
+      - 0
+    options:
+      - OK
+      - 1
+      - 0
+      - nil
+      - Length of the list
+  - question: Which command is used to remove an item from the list based on its value ?
+    answers:
+      - lrem
+  - question: Remove 2 duplicate `1` from `list`
+    answers:
+      - lrem list 2 1
+  - question: What is returned from the `lrem` command
+    answers:
+      - 0
+    options:
+      - Number of items removed
+      - New length of the list
+      - 1
+      - Ok
+  - question: Which command can be used to trim the list
+    answers:
+      - ltrim
+  - question: Write the command to keep only the first 3 items of `list`
+    answers:
+      - ltrim list 0 2
