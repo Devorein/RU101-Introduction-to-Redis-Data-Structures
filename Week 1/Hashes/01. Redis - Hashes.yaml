@@ -1,0 +1,209 @@
+topic: Hashes
+subject: Redis
+questions:
+  - question: What does hashes in redis store ?
+    answers:
+      - 0
+    options:
+      - key/value pairs
+      - binary values
+      - image files
+  - question: Are redis hashes mutable ?
+    answers:
+      - 0
+    options:
+      - Yes
+      - No
+  - question: Redis stores hash values as ?
+    answers:
+      - 0
+    type: MS
+    options:
+      - strings
+      - numbers
+      - boolean
+      - lists
+      - nested hashes
+  - question: Does redis hash follow a certain schema enforced by redis ?
+    answers:
+      - 0
+    options:
+      - No
+      - Yes
+  - question: Which of the following is the syntax of the `hset` command in redis ?
+    answers:
+      - 0
+    options:
+      - "`hset key field value [field value ...]`"
+      - "`hset key field value`"
+      - "`hset key1 field value key2 field value`"
+  - question: Which of the following is the syntax of the `hdel` command in redis ?
+    answers:
+      - 0
+    options:
+      - "`hdel key field [value ...]`"
+      - "`hdel key field`"
+      - "`hdel key1 field key2 field`"
+  - question: Which command can be used to increment a floating point value of a hash field ?
+    answers:
+      - hincrbyfloat
+  - question: Write the command to increment a floating point value of the field `score` of `player:1` by 1.5
+    answers:
+      - hincrbyfloat player:1 score 1.5
+  - question: Which command can be used to set the field if it doesn't exist in the hash ?
+    answers:
+      - hsetnx
+  - question: Store the value `value1` in the field `field1` of the hash `player:1` only if it doesn't exist
+    answers:
+      - hsetnx player:1 field1 value1
+  - question: Does deleting the key that stores a hash, removes all the key/value pairs or the hash ?
+    answers:
+      - 0
+    options:
+      - Yes
+      - No
+  - question: Which command can be used to see if a field exists in a hash ?
+    answers:
+      - hexists
+  - question: Check if the field `name` exists in the key `player:1`
+    answers:
+      - hexists player:1 name
+  - question: What does the `hexists` command return ?
+    answers:
+      - 0
+    options:
+      - 0 if the field doesn't exist, 1 if it does
+      - nil if the field doesn't exist, 1 if it does
+      - error if the field doesn't exist, 1 if it does
+      - OK
+  - question: What does the `hget` command return if the field doesn't exist?
+    answers:
+      - 0
+    options:
+      - 0
+      - nil
+      - error
+      - OK
+  - question: Which command is used to store a hash in redis ?
+    answers:
+      - - text: hset
+        - text: HSET
+  - question: |
+      Store the following JSON object as hash in redis to a key `player:1`
+      ```json
+      {
+        name: "Player 1",
+        age: 21
+      }
+      ```
+    answers:
+      - hset player:1 name "Player 1" age 21
+  - question: What does the `hset` command return
+    answers:
+      - 0
+    options:
+      - Number of fields added to the hash
+      - Value of the last field
+      - OK
+      - nil
+      - 0 for error, 1 for success
+  - question: |
+      What will the following command show ?
+
+      ```bash
+      hset player:1 name "Player 1"
+      type player:1
+      ```
+    answers:
+      - hash
+  - question: |
+      What will the following command show ?
+        
+      ```bash
+      hset player:1 name "Player 1"
+      object encoding player:1
+      ```
+    answers:
+      - ziplist
+  - question: Get the field `name` of the hash stored in `player:1` key
+    answers:
+      - hget player:1 name
+  - question: Get all the fields of the hash stored in `player:1` key
+    answers:
+      - hgetall player:1
+  - question: Update the `name` field of `player:1` to "Player One"
+    answers:
+      - hset player:1 name "Player One"
+  - question: Remove the `age` field from `player:1`
+    answers:
+      - hdel player:1 age
+  - question: |
+      What will be the output of the 2nd line ?
+
+      ```shell
+      hset player:1 name "Player One" age 21
+      2. hset player:1 name "Player 1"
+      ```
+    answers:
+      - text: 0
+        explanation: It will be zero since no new field was added to the hash, it was only updated
+  - question: Which command is used to increment the value of a particular hash field ?
+    answers:
+      - hincrby
+  - question: Increment the value stored in the field `score` of `player:1` by 100
+    answers:
+      - hincrby player:1 score 100
+  - question: Which of the following hash commands have Big O notation of O(1) ?
+    answers:
+      - 0
+      - 1
+      - 2
+      - 3
+    options:
+      - hget
+      - hset
+      - hincrby
+      - hdel
+      - hgetall
+  - question: Which of the following hash commands have Big O notation of O(n) ?
+    answers:
+      - 0
+    type: MS
+    options:
+      - hgetall
+      - hget
+      - hset
+      - hincrby
+      - hdel
+  - question: Which of the following is the syntax of the `hscan` command ?
+    answers:
+      - 0
+    options:
+      - hscan key cursor [MATCH pattern] [COUNT count]
+      - hscan key [MATCH pattern] [COUNT count]
+      - hscan key cursor [MATCH pattern]
+      - hscan key cursor [COUNT count]
+  - question: Use the `hscan` command to get 2 fields of the hash `player:1`, matching the pattern `name` starting from cursor "1"
+    answers:
+      - hscan player:1 1 match name count 2
+  - question: Write the command to get all the keys of a hash ?
+    answers:
+      - hkeys
+  - question: Write the command to get all the values of a hash ?
+    answers:
+      - hvals
+  - question: What does the `hdel` command return ?
+    answers:
+      - 0
+    options:
+      - Number of fields deleted
+      - 0 for failure, 1 for success
+      - nil for failure, 1 for success
+      - error for failure, 1 for success
+      - nil for failure, OK for success
+  - question: Does redis support field level ttl ?
+    answers:
+      - 0
+    options:
+      - No
+      - Yes
