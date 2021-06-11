@@ -1,0 +1,142 @@
+subject: Redis
+topic: Keys Expiration
+questions:
+  - question: Keys in redis can have an expiration time ?
+    answers:
+      - 0
+    options:
+      - Yes
+      - No
+  - question: What does TTL stands for in Redis context ?
+    answers:
+      - 0
+    options:
+      - Time To Live
+      - Time To Leave
+      - Time To Life
+  - question: In which of the following scenario will redis remove the key in memory ?
+    answers:
+      - 0
+      - 1
+      - 2
+    options:
+      - Eviction Policy
+      - Space is required
+      - TTL expiration
+  - question: Expiration time in redis can be set in which of the following formats ?
+    answers:
+      - 0
+      - 1
+      - 2
+    options:
+      - milliseconds
+      - seconds
+      - UNIX timestamp
+      - nanoseconds
+      - minutes
+  - question: Can the ttl be set after the key has been created ?
+    answers:
+      - 0
+    options:
+      - Yes
+      - No
+  - question: Can the ttl be removed after it has been set ?
+    answers:
+      - 0
+    options:
+      - Yes
+      - No
+  - question: Which of the following can be used to set an expiration time for a redis key ?
+    answers:
+      - 0
+      - 1
+      - 2
+      - 3
+    options:
+      - EXPIRE
+      - EXPIREAT
+      - PEXPIRE
+      - PEXPIREAT
+  - question: Which of the following commands can be used to update the expiration time using second format?
+    answers:
+      - 0
+    options:
+      - EXPIRE
+      - EXPIREAT
+      - PEXPIRE
+      - PEXPIREAT
+  - question: Which of the following commands can be used to update the expiration time using a UNIX timestamp format?
+    answers:
+      - 0
+    options:
+      - EXPIREAT
+      - EXPIRE
+      - PEXPIRE
+      - PEXPIREAT
+  - question: Which of the following commands can be used to update the expiration time using milliseconds format?
+    answers:
+      - 0
+    options:
+      - PEXPIRE
+      - EXPIREAT
+      - EXPIRE
+      - PEXPIREAT
+  - question: Which of the following commands can be used to update the expiration time using milliseconds-UNIX timestamp format ?
+    answers:
+      - 0
+    options:
+      - PEXPIREAT
+      - PEXPIRE
+      - EXPIREAT
+      - EXPIRE
+  - question: Which of the following syntaxes for the expiration commands are correct ?
+    answers:
+      - 0
+      - 1
+      - 2
+      - 3
+    options:
+      - EXPIRE key seconds
+      - EXPIREAT key timestamp
+      - PEXPIRE key milliseconds
+      - PEXPIREAT key milliseconds-timestamp
+  - question: Which of the following commands can be used to inspect the ttl for a key ?
+    answers:
+      - 0
+      - 1
+    options:
+      - TTL
+      - PTTL
+      - TTLAT
+      - PTTLAT
+  - question: Which of the following command can be used to remove the ttl of a key ?
+    type: MS
+    answers:
+      - 0
+    options:
+      - PERSIST
+      - TTLREM
+      - TTLDEL
+      - PTTLREM
+      - PTTLDEL
+  - question: Use the `set` command to set `key1` to `value1` with ttl of 50 seconds. (Don't set it in milliseconds)
+    answers:
+      - set key1 value1 EX 50
+  - question: Use the `set` command to set `key1` to `value1` with ttl of 50 milliseconds. (Don't set it in seconds)
+    answers:
+      - set key1 value1 PX 50
+  - question: Update the ttl of the `key1` key to 1 second using the milliseconds format
+    answers:
+      - pexpire key1 1000
+  - question: Inspect the ttl of the key `key1` in seconds
+    answers:
+      - ttl key1
+  - question: Inspect the ttl of the key `key1` in milliseconds
+    answers:
+      - pttl key1
+  - question: Remove the ttl of the key `key1`
+    answers:
+      - persist key1
+  - question: If there is no ttl for a key what does the `ttl` or `pttl` command return ?
+    answers:
+      - -1
