@@ -43,10 +43,10 @@ questions:
     answers:
       - 0
     options:
-      - zadd key [NX|XX] [CH] [INCR] score member [score member...]
-      - zadd key score member [score member...] [NX|XX] [CH] [INCR]
-      - zadd key score member [score member...] [NX|XX] [INCR]
-      - zadd key score member [score member...] [NX|XX]
+      - "`zadd key [NX|XX] [CH] [INCR] score member [score member...]`"
+      - "`zadd key score member [score member...] [NX|XX] [CH] [INCR]`"
+      - "`zadd key score member [score member...] [NX|XX] [INCR]`"
+      - "`zadd key score member [score member...] [NX|XX]`"
   - question: How is the sorted set ordered ?
     answers:
       - 0
@@ -96,9 +96,9 @@ questions:
     answers:
       - 0
     options:
+      - Ascending order based on rank
       - Ascending order based on score
-      - Ascending order based on member
-      - Descending order based on member
+      - Descending order based on rank
       - Descending order based on score
   - question: Which command is used to get the members of a sorted set in reverse order
     answers:
@@ -143,10 +143,12 @@ questions:
       - zcount
   - question: Which of the following is the syntax of the `zcount` command
     answers:
+      - 0
+    options:
       - zcount key min max
       - zcount key max min
       - zcount key
-  - question: Get the number of members of the sorted set `ss` within the score `1` and 3
+  - question: Get the number of members of the sorted set `ss` within the score `1` and `3`
     answers:
       - zcount ss 1 3
   - question: Which command can be used to get the members of a sorted set within a range of score
@@ -240,3 +242,53 @@ questions:
     options:
       - No
       - Yes
+  - question: Does the result from sorted set union and intersection need to be stored in a destination sorted set ?
+    answers:
+      - 0
+    options:
+      - Yes
+      - No
+  - question: Get the top 3 members of the sorted set `ss` ranked by its score, with scores included in the result
+    answers:
+      - zrevrange ss 0 2 withscores
+
+  - question: Trim the sorted set `ss` by keeping only the top 3 ranked members
+    answers:
+      - text: zremrangebyrank ss 0 -4
+        explanation: 0 is the start index, -4 is the 4th element from the end, thus the command keeps the top 3 members of the sorted set based on ranking
+  - question: |
+      What is the output of the following code
+      ```shell
+      zadd ss 1 a
+      type ss
+      ```
+    answers:
+      - zset
+  - question: |
+      What is the output of the following code
+      ```shell
+      zadd ss 1 a
+      object encoding ss
+      ```
+    answers:
+      - ziplist
+  - question: How does `zrevrange` sort the return value ?
+    answers:
+      - 0
+    options:
+      - Based on its score
+      - Based on its rank
+      - Based on its members
+  - question: Which of the following are not sorted set commands
+    answers:
+      - text: 0
+        explanation: "`zrangebyrank` is the same as `zrange`"
+      - text: 1
+        explanation: "`zrevrangebyrank` is the same as `zrevrange`"
+    options:
+      - "`zrangebyrank`"
+      - "`zrevrangebyrank`"
+      - "`zrangebyscore`"
+      - "`zrangebylex`"
+      - "`zrevrangebyscore`"
+      - "`zrevrangebylex`"
