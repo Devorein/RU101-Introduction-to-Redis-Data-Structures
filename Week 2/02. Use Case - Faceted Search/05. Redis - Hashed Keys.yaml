@@ -47,9 +47,12 @@ questions:
       - "`sinter`"
       - "`scard`"
   - question: What are the drawbacks of hashed key searching ?
-    answers: 0
+    answers:
+      text: 0
+      explanation: If the attribute is change to a different one, then it needs to be added to the appropriate hashed key set. Same thing happens if the value changes as well.
     options:
-      - If the attribute x value combinations changes
+      - If the attribute x value of the data changes
+      - If the attribute x value of the dataset changes
       - If the number of attribute of the data changes
       - If the number of value of the data changes
   - question: Which scenario is best for hashed key searching ?
