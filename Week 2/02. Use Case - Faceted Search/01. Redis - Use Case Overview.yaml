@@ -1,0 +1,59 @@
+topic: Use Case Overview
+subject: Redis
+questions:
+  - question: Which of the following is a lot more efficient way of searching for a single value ?
+    answers: 0
+    options:
+      - Secondary Indexes
+      - Full text search
+  - question: What are the drawbacks of secondary Indexes ?
+    answers:
+      - 0
+      - 1
+      - 2
+    options:
+      - Additional overhead when a new record is inserted, as the index needs to be updated
+      - Not efficient when searching for partial value
+      - Extra space to store the indexes
+      - Slower query response
+  - question:
+      - To make use of
+      - indexes, a database that supports index
+      - is required
+    answers:
+      - multiple
+      - intersection
+  - question: Which of the following indexes is required to search using multiple criterias ?
+    answers: 0
+    options:
+      - Compound indexes
+      - Multiple indexes
+      - Secondary indexes
+      - Intersected indexes
+  - question: Which of the following are examples of full text search engines ?
+    answers:
+      - 0
+      - 1
+      - 2
+      - 3
+    options:
+      - Solr
+      - Lucene
+      - Algolia
+      - Elasticsearch
+  - question: Which of the following is an advantage of a faceted search ?
+    answers:
+      - 0
+      - 1
+      - 2
+    options:
+      - Multiple criterias
+      - Multiple filters
+      - Simple navigation
+  - question: What is another name for a faceted search ?
+    answers: 0
+    options:
+      - Inverted index
+      - Fragmented index
+      - Secondary index
+      - Intersected index
