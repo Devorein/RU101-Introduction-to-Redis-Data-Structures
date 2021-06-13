@@ -1,0 +1,75 @@
+topic: Faceted Search
+subject: Redis
+questions:
+  - question: What data structure is used for faceted search ?
+    answers: 0
+    options:
+      - sets
+      - sorted sets
+      - lists
+      - hash
+  - question: In a faceted search all the combinations of the attributes and its values are stored in a set ?
+    answers: 0
+    options:
+      - Yes
+      - No
+  - question: Which set operation is used to find the search result ?
+    answers: sinter
+  - question: Time complexity of `sinter` command depends on which factors ?
+    answers:
+      - 0
+      - 1
+      - 2
+    options:
+      - Cardinality of the smallest set
+      - Number of sets
+      - Members of the set
+  - question: If there are three sets A, B and C, with cardinality of 2, 5 and 1 respectively, whose cardinality will the result of faceted search depend upon ?
+    answers:
+      text: C
+      explanation: Since the cardinality of set C is the lowest, the search result of the faceted search will depend upon the only member of set C
+  - question: |
+      A set has 2 members  
+      B set has 5 members  
+      C set has 1 member
+
+      Write the most efficient way for faceted search
+    answers:
+      text: sinter C A B
+      explanation: Since C has the lowest cardinality, searching its only member in the other sets is gonna be a lot more efficient
+  - question:
+      - Cardinality for a
+      - search set is governed by the data
+      - of the
+      - for that
+      - .
+    answers:
+      - faceted
+      - distribution
+      - values
+      - attribute
+    difficulty: Advanced
+  - question: Is it required to gain insight regarding the data distribution for efficient faceted search ?
+    answers:
+      text: 0
+      explanation: Since data distribution dictates the cardinality of the faceted search sets, and time complexity of it depends on the cardinality of the sets.
+    options:
+      - Yes
+      - No
+  - question: What is the equation of the Time Complexity of a faceted search ?
+    answers: 0
+    options:
+      - Cardinality of smallest set * Number of sets
+      - Cardinality of highest set * Number of sets
+      - Cardinality of highest set
+      - Cardinality of smallest set
+  - question: Using the faceting method with Sets, what is the limiting factor?
+    answers:
+      - text: 0
+        explanation: If the data values are too varied then a lot of sets has to be created for the same attributes, or if the data values are too similar then the cardinality of the sets will increase.
+      - text: 1
+        explanation: If there are multiple attributes to be checked for, then similarly a lot of sets has to be created
+    options:
+      - The data distribution of the attribute values being matched
+      - The number of attributes that have to be matched
+      - Number of keys that have to be matched and inspected

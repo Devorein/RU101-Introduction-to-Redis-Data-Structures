@@ -1,0 +1,15 @@
+subject: Faceting
+topic: Redis
+questions:
+  - question: Does redis support secondary indexes ?
+    answers: 0
+    options:
+      - No
+      - Yes
+  - question: What indexes does Redis natively support?
+    answers: 0
+    options:
+      - None of them
+      - Compound indexes
+      - Secondary indexes
+      - Compound and Secondary indexes
