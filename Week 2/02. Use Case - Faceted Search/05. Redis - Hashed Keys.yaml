@@ -1,0 +1,71 @@
+subject: Redis
+topic: Hashed Keys
+questions:
+  - question: Does compound indexes require to have the leading part of the index to be always present ?
+    answers: 0
+    options:
+      - Yes
+      - No
+  - question: If the leading part of the compound index is not present can it be used ?
+    answers: 0
+    options:
+      - No
+      - Yes
+  - question:
+      - In order to create a compound index in redis, its required to create a consistent
+      - of the
+      - thats needed to be searched for
+    answers:
+      - hash
+      - attributes
+  - question: Should the hashed value need to be reproducible based on same input ?
+    answers:
+      text: 0
+      explanation: |
+        Since hashed key set's hashed key is generated based on a hashing algorithm, the key can be quite complex.
+
+        Thus most of the time its automated.
+
+        As a result when the set has to be retrieved, the hashed value needs to be reproduced again for the same input.
+    options:
+      - Yes
+      - No
+  - question: Can any hashing algorithm be used to generate the key ?
+    answers: 0
+    options:
+      - Yes
+      - No
+  - question: Which of the following set commands are used for hashed keys search ?
+    answers:
+      - text: 0
+        explanation: "`sadd` is used to add members to the hashed key set"
+      - text: 1
+        explanation: "`srange` is used to get all the members of the hashed key set"
+    options:
+      - "`sadd`"
+      - "`srange`"
+      - "`sinter`"
+      - "`scard`"
+  - question: What are the drawbacks of hashed key searching ?
+    answers: 0
+    options:
+      - If the attribute x value combinations changes
+      - If the number of attribute of the data changes
+      - If the number of value of the data changes
+  - question: Which scenario is best for hashed key searching ?
+    answers: 0
+    options:
+      - If the data doesn't change much
+      - If the number of attributes is more
+      - If the data distribution is more
+  - question: Using the hashed faceting method, what is the limiting factor?
+    answers:
+      text: 0
+      explanation: |
+        The hashed faceting method will result in a Set which contains keys for each matching object with the attribute values being searched for.
+
+        The limiting factor is therefore the cardinality of the set for any given attribute x value combination.
+    options:
+      - The number of matches for any given attribute combination
+      - The number of keys that have to be matched and inspected
+      - The number of attributes that have to be matched
