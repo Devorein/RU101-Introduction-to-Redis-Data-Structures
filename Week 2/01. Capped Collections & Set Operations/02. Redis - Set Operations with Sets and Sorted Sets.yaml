@@ -1,0 +1,64 @@
+topic: Set Operations with Sets and Sorted Sets
+subject: Redis
+questions:
+  - question: Which of the following aggregates are available in the `aggregate` argument of sorted set operations ?
+    answers:
+      - 0
+      - 1
+      - 2
+    options:
+      - MIN
+      - MAX
+      - SUM
+      - AVG
+      - UNIQUE
+  - question: Which of the following is the syntax of the `zunionstore` command
+    answers: 0
+    options:
+      - zunionstore destkey numkey sourcekey1 [sourcekey2...] weights key1weight [key2weight...] aggregate [min|max|sum]
+      - zunionstore destkey numkey sourcekey1 [sourcekey2...] weights key1weight [key2weight...] aggregate [min|max|avg]
+      - zunionstore destkey numkey sourcekey1 [sourcekey2...] weights key1weight [key2weight...]
+      - zunionstore destkey numkey sourcekey1 [sourcekey2...] aggregate [min|max|avg]
+  - question: Find the intersection between two sorted sets `z1` and `z2`, store them in the key `z3` and use the `sum` aggregate
+    answers: zinterstore z3 2 z1 z2 aggregate sum
+  - question: Can the set operations of sorted sets operate on both regular and sorted sets ?
+    answers: 0
+    options:
+      - Yes
+      - No
+  - question: |
+      What will be the output of line 4
+
+      ```shell
+      zadd z1 1 a 2 b 3 c
+      zadd z2 3 b 4 c 5 d
+      zinterstore z3 2 z1 z2 aggregate sum
+      zscore z3 b
+      ```
+    answers: 5
+  - question: Find the union between sorted sets `z1` and `z2` and store in `z3`, with the `max` aggregate
+    answers: zunionstore z3 2 z1 z2 aggregate max
+  - question: Find the union between set `s1` and sorted set `z1`, by using weight `1.5` for `s1` and `1` for `z1`, storing in `z2`, using the aggregate sum
+    answers: zunionstore z2 2 s1 z1 weights 1.5 1 aggregate sum
+  - question: |
+      What will be the output of line 4
+      ```shell
+      sadd s1 a b c
+      zadd z1 1 a 2 b 3 c
+      zunionstore z2 2 s1 z1 weights 0.5 1 aggregate sum
+      zscore z2 a
+      ```
+    answers:
+      text: 1.5
+      explanation: Weight of member a from `s1` is `0.5` and weight of it from `z1` is `1`. Since the aggregate is `sum`, `0.5 + 1 = 1.5`
+  - question: |
+      What will be the output of line 4
+      ```shell
+      sadd s1 a b c
+      zadd z1 1 a 2 b 3 c
+      zunionstore z2 2 s1 z1 weights 3 4 aggregate max
+      zscore z2 a
+      ```
+    answers:
+      text: 4
+      explanation: Weight of member a from `s1` is `3` and weight of it from `z1` is `4 * 1 = 4`. Since the aggregate is `max`, `4 > 3`
