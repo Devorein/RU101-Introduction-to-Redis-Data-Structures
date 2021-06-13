@@ -62,6 +62,20 @@ questions:
     answers:
       - text: 1
         explanation: Since only one new member 4 is added to the set, 1 is the answer
+  - question: |
+      What will be the output of line 3
+
+      ```shell
+      sadd hw1-7 "hello"
+      spop hw1-7
+      exists hw1-7
+      ```
+    answers:
+      - text: 0
+        explanation: |
+          Redis does not store empty lists, sets, sorted sets or hashes. Therefore, the key is removed if this condition is met.
+          In this example, when SPOP command is executed, then the set is empty. Redis at this point removes the key.
+          When the EXISTS command is executed, the value of zero is returned, because the key no longer exists.
   - question: Add members `1`, `2` and `3` to `set`
     answers:
       - sadd set 1 2 3
@@ -193,7 +207,6 @@ questions:
       - sunion key1 key2
   - question: |
       What is the output of line 4
-
       ```shell
       1 sadd set1 1 2 3 4 5 6
       2 sadd set2 3 4 5

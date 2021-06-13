@@ -1,0 +1,47 @@
+topic: Cardinality & Capped Collections
+subject: Redis
+questions:
+  - question: Which command is used to find the cardinality of a list ?
+    answers: llen
+  - question: Which command is used to find the cardinality of a set ?
+    answers: scard
+  - question: Which command is used to find the cardinality of a sorted set ?
+    answers: zcard
+  - question: Which command is used to retain a range of index of elements in a list ?
+    answers: ltrim
+  - question: Retain only the first 3 elements of list `list1`
+    answers: ltrim list1 0 2
+  - question: Retain the last three items in the list `list1`
+    answers: ltrim list1 -3 -1
+  - question: Which commands are used to keep a capped list ?
+    options:
+      - "`lpush`"
+      - "`ltrim`"
+      - "`rpush`"
+    answers:
+      - text: 0
+        explanation: Pushes an element to the left of the list
+      - text: 1
+        explanation: Trim the list within an index range
+  - question: what is the equivalent of `ltrim` for sorted set ?
+    answers:
+      - text: zremrangebyrank
+        explanation: This command removes the range specified
+  - question: Remove the last two members of the sorted set `ss`
+    answers:
+      - zremrangebyrank ss -2 -1
+  - question: Remove the lowest ranked member of the sorted set `ss`
+    answers:
+      - zremrangebyrank ss 0 0
+  - question: Remove the highest ranked member of the sorted set `ss`
+    answers:
+      - zremrangebyrank ss -1 -1
+  - question: Which of the following commands are used to cap a sorted set ?
+    answers:
+      - 0
+      - 1
+    options:
+      - zremrangebyrank
+      - zadd
+      - zcard
+      - zrange

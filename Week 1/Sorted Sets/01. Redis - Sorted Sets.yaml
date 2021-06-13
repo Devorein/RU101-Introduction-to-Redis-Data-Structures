@@ -16,8 +16,7 @@ questions:
       - integer number
       - String
   - question: If two members have the same score, how is the tie broken ?
-    answers:
-      - 0
+    answers: 0
     options:
       - Based on the lexical order of the members
       - Based on which member was added first
@@ -37,8 +36,7 @@ questions:
       - No
       - Yes
   - question: Which command is used to add a member to a sorted set ?
-    answers:
-      - zadd
+    answers: zadd
   - question: Which of the following is the syntax of the `zadd` command
     answers:
       - 0
@@ -248,10 +246,9 @@ questions:
     options:
       - Yes
       - No
-  - question: Get the top 3 members of the sorted set `ss` ranked by its score, with scores included in the result
+  - question: Get the top 3 members of the sorted set `ss`, with scores included in the result
     answers:
       - zrevrange ss 0 2 withscores
-
   - question: Trim the sorted set `ss` by keeping only the top 3 ranked members
     answers:
       - text: zremrangebyrank ss 0 -4
@@ -292,3 +289,11 @@ questions:
       - "`zrangebylex`"
       - "`zrevrangebyscore`"
       - "`zrevrangebylex`"
+  - question: |
+      ```shell
+      zadd hw1-8 1 a 2 b 3 c 4 d 5 e 6 f
+      ```
+      What command would return members with a score greater than 3, regardless of the current members of the Sorted Set
+    answers:
+      - text: zrangebyscore hw1-8 (3 +inf
+        explanation: ZRANGEBYSCORE returns values based on the score of the member. The parens symbol "(" indicates an exclusive range, which meets the requirements of greater than 3.
