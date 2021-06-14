@@ -1,0 +1,74 @@
+topic: Optimistic Concurrency Control
+subject: Redis
+questions:
+  - question: What is the purpose of Optimistic Concurrency control ?
+    answers:
+      - 0
+      - 1
+    options:
+      - allows to specify an interest in an object
+      - Get notification if an object has changed
+      - Parallel execution of transaction commands
+  - question: What sort of notification system can be used to ensure Optimistic Concurrency control ?
+    answers: 0
+    options:
+      - Keyspace notification
+      - Namespace notification
+      - Database notification
+  - question: Which command is used to declare an interest in one or more keys ?
+    answers: watch
+  - question: Which of the following is syntax of the `watch` command ?
+    answers: 0
+    options:
+      - "`watch key [key...]`"
+      - "`watch key`"
+      - "`watch key ex`"
+  - question:
+      - When
+      - is called, the
+      - will fail, if any of the watched
+      - have been modified
+    answers:
+      - exec
+      - transaction
+      - keys
+  - question: Which command is used to remove interest in all keys ?
+    answers: unwatch
+  - question: Which of the following is the syntax of the `unwatch` command ?
+    answers: 0
+    options:
+      - "`unwatch`"
+      - "`unwatch key`"
+      - "`unwatch key [key...]`"
+  - question: Can the watch be called after the transaction starts ?
+    answers: 0
+    options:
+      - No
+      - Yes
+  - question: What will happen if multiple `watch` commands are executed?
+    answers: 0
+    options:
+      - The effect is cumulative
+      - The previous watched keys will be overridden
+  - question:
+      - watches are
+      - to the current
+      - in
+      - .
+
+    answers:
+      - local
+      - client
+      - connection
+  - question: Are watches global ?
+    answers: 0
+    options:
+      - No
+      - Yes
+  - question: Is all the watched keys automatically unwatched after the successful execution of a transaction ?
+    answers: 0
+    options:
+      - Yes
+      - No
+  - question: What is returned from `exec` command if a transaction was discarded ?
+    answers: nil

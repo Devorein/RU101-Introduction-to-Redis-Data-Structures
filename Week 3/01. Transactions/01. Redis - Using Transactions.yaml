@@ -70,11 +70,11 @@ questions:
       - 0
       - 1
     options:
-      - If an invalid parameter is used for a command
+      - If an invalid argument number is used for a command
       - If an invalid command is used
       - Invalid operation on the data type
       - System errors like insufficient memory
-  - question: In which of the following cases will not redis abort the transaction ?
+  - question: In which of the following cases will redis not abort the transaction ?
     answers:
       text: 0
       explanation: Redis will not abort a transaction if the command operates on an invalid argument, since that a runtime error.
