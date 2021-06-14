@@ -1,0 +1,125 @@
+topic: Storing Complex Object
+subject: Redis
+questions:
+  - question: Is there is ordering for the hash fields ?
+    answers: 0
+    options:
+      - No
+      - Yes
+  - question: |
+      Store the following json object using flattening hierarchy model in a hash named `json`
+
+      ```json
+      {
+        "name": {
+          "first": "a",
+          "last": "b"
+        },
+      }
+      ```
+    answers: hmset json name:first a name:last b
+  - question: |
+      Retrieve the first and last name from the json object.
+
+      * stored using flattening hierarchy 
+      * Stored in a hash named `json`
+      * In a synchronous way
+
+      ```json
+      {
+        "name": {
+          "first": "a",
+          "last": "b"
+        },
+      }
+      ```
+    answers: hmget json name:first name:last
+  - question: |
+      Retrieve the first and last name from the json object.
+
+      * stored using flattening hierarchy 
+      * Stored in a hash named `json`
+      * In an asynchronous way
+
+      ```json
+      {
+        "name": {
+          "first": "a",
+          "last": "b"
+        },
+      }
+      ```
+    answers: hscan json 0 match name:*
+  - question: Which of the following is the easiest way to store hashes in redis ?
+    answers: 0
+    options:
+      - Flattened hierarchy
+      - Multiple hashes
+      - Multiple hashes + Sets
+  - question: What are the benefits of flattened hierarchy hash storage ?
+    answers:
+      - text: 0
+        explanation: Since all the data is stored in a single hash, all the commands on that hash are atomic.
+      - text: 1
+        explanation: Some hash commands provide the mechanism to execute multiple commands in a single one, thus removing the need to use a transaction
+      - text: 2
+        explanation: If a hash is removed, all the data related to that hash is also removed
+    options:
+      - Atomic operations
+      - No transaction required
+      - Encapsulation
+      - Polymorphism
+      - Separate expiration
+  - question: Which of the following is a con of flattened hierarchy ?
+    answers:
+      - text: 0
+        explanation: If all the fields of a nested document was stored in another hash, deleting that hash would've removed all the keys, but since its not, all the keys have to be deleted one by one.
+      - text: 1
+        explanation: If the location of the sub-documents is not consistent, or changes, then all the name of the fields have to be changed as well
+      - text: 2
+        explanation: For certain operations that depends on the number of keys of the hash, the time required for the command execution will increase if the number of fields increases.
+    options:
+      - Removing nested documents
+      - Inconsistent sub-document location
+      - Large object
+      - More space and memory required
+  - question: |
+      Store the following json object using multiple hash in a hash named `json:123`
+
+      ```json
+      {
+        "id": 123,
+        "name": {
+          "first": "a",
+          "last": "b"
+        },
+      }
+      ```
+    answers: |
+      hset json:123 id 123
+      hmset json:123:name first a last b
+  - question: |
+      Get the first and last field of the name field stored using multiple hash in `json:123`
+
+      ```json
+      {
+        "id": 123,
+        "name": {
+          "first": "a",
+          "last": "b"
+        },
+      }
+      ```
+    answers: hmget json:123:name first last
+  - question: What are the advantages of using multiple hashes ?
+    answers:
+      - text: 0
+        explanation: Since the sub-document is stored in its own hash, deleting it is easier
+      - text: 1
+        explanation: Since using a separate hash means less fields, the execution time of commands will decrease
+      - text: 2
+        explanation: Since the sub-document is stored in a separate hash, separate expiration can be used.
+    options:
+      - Extensible structure
+      - Independently stored
+      - Separate expiration
