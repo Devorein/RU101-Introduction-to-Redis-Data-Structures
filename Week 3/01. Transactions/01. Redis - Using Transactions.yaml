@@ -1,0 +1,90 @@
+topic: Using Transactions
+subject: Redis
+questions:
+  - question:
+      - Transactions encapsulates a set of
+      - that are guaranteed to be
+      -
+    answers:
+      - commands
+      - atomic
+  - question: Commands of a transactions are executed in which order ?
+    answers: 0
+    options:
+      - Sequentially
+      - Parallelly
+      - Randomly
+      - Last command to first command
+  - question: Which of the following is true for a redis transaction ?
+    answers: 0
+    options:
+      - executes multiple commands as a single operation
+      - executes commands parallelly
+      - If one command fails the rest continues
+  - question: Can another redis connection act on the server while its executing a transaction ?
+    answers:
+      text: 0
+      explanation: Redis server blocks the thread while executing a transaction, thus ensuring no two transaction can be executed simultaneously
+    options:
+      - No
+      - Yes
+  - question: Does redis ensures the atomicity of the transactions ?
+    answers:
+      text: 0
+      explanation: If one command fails, the whole transaction fails, and the executed commands are rolled back to get to the previous state before the transaction started
+    options:
+      - Yes
+      - No
+  - question:
+      - If commands are queued up and a
+      - is lost, redis ensures that none of the
+      - are executed
+    answers:
+      - connection
+      - commands
+  - question: Which command is used to indicate the start of a transaction in redis ?
+    answers: multi
+  - question: Which command is used to executed the queued commands of a transaction ?
+    answers: exec
+  - question: Which command is used to throw away the queued commands of a transaction ?
+    answers: discard
+  - question: What is the response message after executing any command in a transaction ?
+    answers: QUEUED
+  - question: Can other connections see the queued commands of a transaction created in one connection ?
+    answers: 0
+    options:
+      - No
+      - Yes
+  - question: Does redis support nested transaction ?
+    answers: 0
+    options:
+      - No
+      - Yes
+  - question: Does redis always ensures that either all of the commands or none of the commands are executed in a transaction ?
+    answers: 0
+    options:
+      - Yes
+      - No
+  - question: In which of the following cases will redis abort the transaction ?
+    answers:
+      - 0
+      - 1
+    options:
+      - If an invalid parameter is used for a command
+      - If an invalid command is used
+      - Invalid operation on the data type
+      - System errors like insufficient memory
+  - question: In which of the following cases will not redis abort the transaction ?
+    answers:
+      text: 0
+      explanation: Redis will not abort a transaction if the command operates on an invalid argument, since that a runtime error.
+    type: MS
+    options:
+      - Invalid operation on the data type
+      - If an invalid parameter is used for a command
+      - If an invalid command is used
+  - question: Does redis provide rollback mechanism
+    answers: 0
+    options:
+      - No
+      - Yes

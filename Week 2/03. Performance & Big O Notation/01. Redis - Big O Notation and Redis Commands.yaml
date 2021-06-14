@@ -141,8 +141,8 @@ questions:
 
       ```shell
       rpush list1 a b c d e f g h
-      lrange list1 4 6
+      lrange list1 3 6
       ```
     answers:
-      text: 7
-      explanation: 4 elements have to be traversed to get the elements that has to be extracted, which stands at `(6 - 4 + 1) = 3` elements. So `4 + 3 = 7`
+      text: 8
+      explanation: 4 elements have to be traversed to get the elements that has to be extracted, which stands at `(6 - 3 + 1) = 4` elements. So `4 + 4 = 8`
