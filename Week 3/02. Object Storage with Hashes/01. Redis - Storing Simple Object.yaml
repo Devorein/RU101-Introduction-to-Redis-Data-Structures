@@ -1,0 +1,40 @@
+topic: Storing Simple Object
+subject: Redis
+questions:
+  - question: Is there is ordering for the hash fields ?
+    answers: 0
+    options:
+      - No
+      - Yes
+  - question: Which command is used to get multiple fields from a single command ?
+    answers: hmget
+  - question: Which of the following is the syntax of the `hget` command ?
+    answers:
+      text: 0
+      explanation: "`hget` only allows to get a single field from a hash, to get multiple fields use the `hmget` command"
+    options:
+      - "`hget key field`"
+      - "`hget key field [field...]`"
+      - "`hget field key`"
+  - question: Which of the following is an asynchronous command ?
+    answers: 0
+    options:
+      - "`hscan`"
+      - "`hget`"
+      - "`hmget`"
+      - "`hgetall`"
+  - question: When is the difference between `hget` and `hmget` evident ?
+    answers: 0
+    options:
+      - When dealing with large amount of fields
+      - When dealing with small amount of fields
+      - When dealing with small fields having large values
+  - question: Which of the following numeric commands are available for hashes ?
+    answers:
+      - 0
+      - 1
+    options:
+      - "`hincrby`"
+      - "`hincrbyfloat`"
+      - "`hdecrbyfloat`"
+      - "`hdecrby`"
