@@ -1,0 +1,45 @@
+topic: Patterned Publish / Subscribe
+subject: Redis
+questions:
+  - question: Write the command to return a list of all active channels (channels that has at least one subscribed channels)
+    answers: pubsub channels *
+  - question: Write the command to get the number of subscribers for the channel `c1`
+    answers: pubsub numsub ch1
+  - question: Which character is used to indicate a single character pattern ?
+    answers: "?"
+  - question: Write the pattern to subscribe to all channels that starts with `ch:`
+    answers: ch:*
+  - question: Write the command used to get the total number of subscribed patterned channels
+    answers: pubsub numpat
+  - question: Which of the following channels will match the pattern `ch:*`
+    answers:
+      - 0
+      - 1
+      - 2
+    options:
+      - ch:1
+      - ch:aa
+      - "ch:"
+      - ch-1
+      - ch-a
+      - ch-
+  - question: Which of the following channels will match the pattern `ch:?`
+    answers:
+      text: 0
+      explanation: "? indicates a single character"
+    options:
+      - ch:1
+      - ch:aa
+      - "ch:"
+      - ch-1
+      - ch-a
+      - ch-
+  - question: Which of the following is shown when a client receives a message from a patterned channel ?
+    answers: 0
+    options:
+      - '1) "pmessage" 2) pattern 3) channel 4) message'
+      - '1) "pmessage" 2) pattern 3) message 4) channel'
+      - '1) "pmessage" 2) message 3) pattern 4) channel'
+      - '1) pattern 2) message 3) "pmessage" 4) channel'
+      - '1) pattern 2) message 3) channel 4) "pmessage"'
+      - '1) pattern 2) channel 3) message 4) "pmessage"'
