@@ -19,7 +19,7 @@ questions:
       ```
     answers: hmset json name:first a name:last b
   - question: |
-      Retrieve the first and last name from the json object.
+      Retrieve the `first` and `last` name from the json object.
 
       * stored using flattening hierarchy 
       * Stored in a hash named `json`
@@ -35,7 +35,7 @@ questions:
       ```
     answers: hmget json name:first name:last
   - question: |
-      Retrieve the first and last name from the json object.
+      Retrieve the `first` and `last` name from the json object.
 
       * stored using flattening hierarchy 
       * Stored in a hash named `json`
@@ -99,7 +99,7 @@ questions:
       hset json:123 id 123
       hmset json:123:name first a last b
   - question: |
-      Get the first and last field of the name field stored using multiple hash in `json:123`
+      Get the `first` and `last` field of the name field stored using multiple hash in `json:123`
 
       ```json
       {
@@ -123,3 +123,5 @@ questions:
       - Extensible structure
       - Independently stored
       - Separate expiration
+      - Atomic operations on parent and sub-documents
+      - Encapsulation

@@ -1,0 +1,99 @@
+topic: Bit Fields
+subject: Redis
+questions:
+  - question: Which command is used for manipulation of one or more variable length integers within the string data type ?
+    answers: bitfield
+  - question: Does the bitfield commands require the type to be specified ?
+    answers: 0
+    options:
+      - Yes
+      - No
+  - question: Write the letter that indicates unsigned bitfield ?
+    answers: u
+  - question: Write the letter that indicates signed bitfield ?
+    answers: i
+  - question: Which of the following information are included in a type ?
+    answers:
+      - 0
+      - 1
+    options:
+      - unsigned or signed
+      - number of bits
+      - type of data (string/integer)
+  - question: Write the type for unsigned and 8 bit length
+    answers: u8
+  - question: Write the type for signed and 16 bit length
+    answers: i16
+  - question: Does the number of bits/size of type needs to be byte aligned, ie in multiples of 8?
+    answers: 0
+    options:
+      - No
+      - Yes
+  - question: Which of the following types are valid ?
+    answers:
+      - 0
+      - 1
+      - 2
+      - 3
+    options:
+      - u5
+      - u2
+      - i8
+      - i3
+      - us8
+      - s8
+  - question: What is the size limit in bits for signed bitfield ?
+    answers: 64
+  - question: What is the size limit in bits for unsigned bitfield ?
+    answers: 63
+  - question: Create a unsigned 8 bit bitfield `bfd` and store 2 in the first position
+    answers: bitfield bfd set u8 0 2
+  - question: Get the value stored in the first position of the unsigned 8 bit bitfield `bfd`
+    answers: "bitfield bfd get u8 #0 2"
+  - question: |
+      What would be the output of line 2
+
+      ```shell
+      bitfield bfd set u8 0 2
+      get bfd
+      ```
+    answers:
+      text: 0
+      explanation: get `bfd` with return the hexadecimal representation of the bitfield
+    options:
+      - "`\\x02`"
+      - "`\\x03`"
+      - "`\\x04`"
+      - "`\\x00`"
+  - question: |
+      What would be the output of line 2
+
+      ```shell
+      bitfield bfd set u8 0 2
+      type bfd
+      ```
+    answers: string
+  - question: |
+      What would be the output of line 2
+
+      ```shell
+      bitfield bfd set u8 0 2
+      object encoding bfd
+      ```
+    answers: raw
+  - question: In an unsigned 8 bit bitfield `bfd`, store `3` in the second position
+    answers:
+      - - text: "bitfield bfd set u8 #1 3"
+          explanation: "(#) sign can be used to indicate the position"
+        - text: "bitfield bfd set u8 8 3"
+          explanation: "The bit number can also be manually indicated"
+  - question: |
+      For the signed 16 bit bitfield `bfd`
+
+      Get the values
+
+      1. stored in the first position using pound notation 
+      2. stored in the second position using bit number notation
+    answers: "bitfield bfd get i16 #0 get i16 8"
+  - question: Increment the value stored in the 2nd position of the unsigned 16 bitfield `bfd` by 3
+    answers: "bitfield bfd incrby u16 #1 3"
