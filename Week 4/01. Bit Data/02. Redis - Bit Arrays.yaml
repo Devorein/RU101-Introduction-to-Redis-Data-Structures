@@ -1,0 +1,87 @@
+topic: Bit Arrays
+subject: Redis
+questions:
+  - question: Which command is used to get a bit array ?
+    answers: getbit
+  - question: Which command is used to set a bit array ?
+    answers: setbit
+  - question: Which command is used to count the number of set bits within a byte range ?
+    answers: bitcount
+  - question: Which command is used to perform bitwise operation ?
+    answers: bitop
+  - question: Which command is used to find the index of the first set or unset bit from a given index in the string ?
+    answers: bitpos
+  - question: |
+      What is the output of line 2
+
+      ```shell
+      bitfield bfd set u1 6 1
+      get bfd
+      ```
+    answers:
+      text: 0
+      explanation: The value 1 is stored in the sixth index of the bitfield, thus `00000010 = 2`
+    options:
+      - "`\\x02`"
+      - "`\\x03`"
+      - "`\\x04`"
+      - "`\\x00`"
+  - question: |
+      What is the output of line 4
+
+      ```shell
+      bitfield b1 set u1 6 1
+      bitfield b2 set u1 7 1
+      bitop or b3 b1 b2
+      get b3
+      ```
+    answers:
+      text: 0
+      explanation: After the `OR` operation, b3 becomes `00000011 = 3`
+    options:
+      - "`\\x03`"
+      - "`\\x02`"
+      - "`\\x04`"
+      - "`\\x00`"
+  - question: |
+      What is the output of line 4
+
+      ```shell
+      bitfield b1 set u1 6 1
+      bitfield b2 set u1 7 1
+      bitop or b3 b1 b2
+      bitcount b3
+      ```
+    answers:
+      text: 2
+      explanation: After the `OR` operation, b3 becomes `00000011`, thus 2 bits are set
+  - question: Which of the following operations are provided by the `bitop` command
+    answers:
+      - 0
+      - 1
+      - 2
+      - 3
+    options:
+      - OR
+      - AND
+      - XOR
+      - NOT
+      - NOR
+      - XNOR
+  - question: What sort of offset does the `bitcount` command use ?
+    answers: 0
+    options:
+      - byte
+      - bit
+  - question: |
+      What is the output of line 2
+
+      ```shell
+      bitfield b set u1 7 1 set u1 15 1 set u1 23 1
+      bitcount b 1 2
+      ```
+    answers:
+      text: 2
+      explanation: b stores the value `00000001 00000001 00000001`, since the start index is a byte offset, it starts at 8 and ends at 23, within that range 2 bits are set.
+  - question: Get the bit number of the first `1` stored in bitfield `b`
+    answers: bitpos b 1
