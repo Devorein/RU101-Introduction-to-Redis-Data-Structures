@@ -1,0 +1,101 @@
+topic: Introduction to Publish & Subscribe
+subject: Redis
+questions:
+  - question: Which command is used to subscribe to a channel ?
+    answers: subscribe
+  - question: Which command is used to unsubscribe from a channel ?
+    answers: unsubscribe
+  - question: Which command is used to publish to a channel ?
+    answers: publish
+  - question: Which command is used to subscribe to a channel based on a pattern ?
+    answers: psubscribe
+  - question: Which command is used to unsubscribe from a channel based on a pattern ?
+    answers: punsubscribe
+  - question: Which of the following is the syntax of the `publish` command ?
+    answers: 0
+    options:
+      - "`publish channel message`"
+      - "`publish channel message [channel message...]`"
+      - "`publish pattern message`"
+      - "`publish pattern [pattern message...]`"
+  - question: Which of the following is the syntax of the `subscribe` command ?
+    answers: 0
+    options:
+      - "`subscribe channel [channel...]`"
+      - "`subscribe channel`"
+      - "`subscribe pattern`"
+      - "`subscribe pattern [pattern...]`"
+  - question: Which of the following is the syntax of the `unsubscribe` command ?
+    answers: 0
+    options:
+      - "`unsubscribe [channel [channel...]]`"
+      - "`unsubscribe channel [channel...]`"
+      - "`unsubscribe channel`"
+      - "`unsubscribe pattern`"
+      - "`unsubscribe pattern [pattern...]`"
+  - question: which of the following is the syntax of the `psubscribe` command ?
+    answers: 0
+    options:
+      - "`psubscribe pattern [pattern...]`"
+      - "`psubscribe pattern`"
+      - "`psubscribe channel [channel...]`"
+      - "`psubscribe channel`"
+  - question: which of the following is the syntax of the `punsubscribe` command ?
+    answers: 0
+    options:
+      - "`punsubscribe [pattern [pattern...]]`"
+      - "`punsubscribe pattern [pattern...]`"
+      - "`punsubscribe [channel [channel...]]`"
+      - "`punsubscribe channel [channel...]`"
+      - "`punsubscribe channel`"
+      - "`punsubscribe pattern`"
+  - question: Publish the message `hello` to channel `ch1`
+    answers: publish ch1 hello
+  - question: Subscribe to the channel `ch1`
+    answers: subscribe ch1
+  - question: What is returned from the `publish` command ?
+    answers: 0
+    options:
+      - Number of clients the message has been sent to
+      - Number of available clients
+      - OK
+      - 1 for success and 0 for failure
+      - nil
+  - question: Is the `subscribe` command blocking ?
+    answers: 0
+    options:
+      - Yes
+      - No
+  - question: |
+      What does 1 mean ?
+
+      ```shell
+      subscribe ch1
+      > 1) "subscribe"
+      > 2) "ch1"
+      > 2) "1"
+      ```
+    answers: 0
+    options:
+      - The current client is listening to 1 channel
+      - The number of clients listening to `ch1` channel is 1
+      - 1 indicates the subscription was successful
+  - question: What type of data can be sent in a message ?
+    answers:
+      - 0
+      - 1
+      - 2
+    options:
+      - Text
+      - Number
+      - Binary
+      - List
+      - Hashmap
+      - None
+  - question: Which of the following is shown when a client receives a message `m1` from a channel `ch1` ?
+    answers: 0
+    options:
+      - "1) message 2) ch1 3) m1"
+      - "1) message 2) m1 3) ch1"
+      - "1) m1 2) message 3) ch1"
+      - "1) m1 2) ch1 3) message"
