@@ -1,0 +1,65 @@
+topic: Adding Geospatial Points
+subject: Redis
+questions:
+  - question: Redis creates a hash using the longitude and latitude of a geospatial point which is called ?
+    answers: 0
+    options:
+      - Geo hash
+      - Redis hash
+      - Geospatial hash
+      - LatLang hash
+  - question: How many bit is a geohash ?
+    answers: 52
+  - question: Which command is used to add one or more coordinates ?
+    answers: geoadd
+  - question: Which of the following is the syntax of the `geoadd` command ?
+    answers: 0
+    options:
+      - geoadd key long lat member [long lat member ...]
+      - geoadd key lat long member [lat long member ...]
+      - geoadd key lat long member
+      - geoadd key long lat member
+  - question: Add the latitude `1` and longitude `2` to the key `geo1`, with the point named `p1`
+    answers: geoadd geo1 2 1 p1
+  - question: Which data structure is internally used to store a geospatial data ?
+    answers:
+      text: 0
+      explanation: The geohash is used as the score of the sorted set and member as the key
+    options:
+      - Sorted set
+      - Set
+      - List
+      - Hash
+  - question: Get all the members of the geospatial key `geo1`
+    answers: zrange geo1 0 -1
+  - question: Which command is used to return the geohash of a member of the geospatial set?
+    answers: geohash
+  - question: Get the geohash of the key `geo1` and point `p1`
+    answers: geohash geo1 p1
+  - question: which of the following is the correct syntax of the `geohash` command ?
+    answers: 0
+    options:
+      - geohash key member [member ...]
+      - geohash key member
+      - geohash member key
+  - question: Which command is used to return the longitude and latitude of a geospatial point ?
+    answers: geopos
+  - question: Get the longitude and latitude of the point `p1` stored in `geo1`
+    answers: geopos geo1 p1
+  - question: Which of the following is the syntax of the `geopos` command ?
+    answers: 0
+    options:
+      - geopos key member [member...]
+      - geopos key member
+      - geopos member key
+  - question: What is the length of the string returned by the `geohash` command ?
+    answers: 11
+  - question: Which of the following is the range of the `geoadd` command ?
+    answers:
+      - 0
+      - 1
+    options:
+      - Longitudes from 180 to -180
+      - Latitudes from 85.0511 to -85.0511
+      - Latitudes from 90 to -90
+      - Longitudes from 90 to -90

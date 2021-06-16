@@ -43,3 +43,34 @@ questions:
       - '1) pattern 2) message 3) "pmessage" 4) channel'
       - '1) pattern 2) message 3) channel 4) "pmessage"'
       - '1) pattern 2) channel 3) message 4) "pmessage"'
+  - question: Which of the following channels will match the pattern `ch:[12]?`
+    answers:
+      text: 0
+      explanation: "[] indicates a range of single character"
+    options:
+      - ch:1
+      - ch:2
+      - ch:aa
+      - "ch:"
+  - question: Which of the following channels will match the pattern `ch:[12]?`
+    answers:
+      text: 0
+      explanation: "[] indicates a range of single character"
+    options:
+      - ch:1
+      - ch:2
+      - ch:aa
+      - "ch:"
+  - question: What glob-like pattern matching does PSUBSCRIBE support?
+    answers:
+      - 0
+      - 1
+      - 2
+      - 3
+    options:
+      - Single character wildcard
+      - Multi character wildcard
+      - Single character alternates
+      - Doesn't Starts with one or more characters
+      - Ends with one or more characters
+      - None
