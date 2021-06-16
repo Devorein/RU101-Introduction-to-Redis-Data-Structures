@@ -52,3 +52,8 @@ questions:
     options:
       - Yes
       - No
+  - question: Which LUA command causes script to terminate when Redis returns an error?
+    answers: 0
+    options:
+      - "`redis.call`"
+      - "`redis.pcall`"

@@ -53,3 +53,10 @@ questions:
       - Starts accepting new commands, but doesn't execute them
       - Starts executing new commands
       - Kills the current script
+  - question: What type of digest is returned by the SCRIPT LOAD command?
+    answers: 0
+    options:
+      - SHA-1
+      - SHA-256
+      - AES
+      - MD5
