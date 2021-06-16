@@ -1,0 +1,79 @@
+topic: Searching for Geospatial Objects
+subject: Redis
+questions:
+  - question: Which command is used to calculate the distance between two members of a geospatial set ?
+    answers: geodist
+  - question: Which of the following is the syntax of the `geodist` command ?
+    answers: 0
+    options:
+      - geodist key member1 member2 [unit]
+      - geodist key member1 member2 unit
+      - geodist key member1 member2 [member3...] unit
+      - geodist key member1 member2
+      - geodist key1 member1 member2 key2 member1 member2
+      - geodist key1 member key2 member
+  - question: Which of the following unit of distance is supported by the `geodist` command ?
+    answers:
+      - 0
+      - 1
+      - 2
+      - 3
+    options:
+      - meter
+      - kilometer
+      - feet
+      - mile
+      - centimeter
+      - yard
+  - question: Is it possible to perform a `geodist` command across two different keys ?
+    answers: 0
+    options:
+      - No
+      - Yes
+  - question: Which command is used to get the distance between a member of a geospatial set and a specific longitude and latitude point ?
+    answers: georadius
+  - question: Which command is used to get the distance between two members of a geospatial set ?
+    answers: georadiusbymember
+  - question: Get the distance between the `p1` and `p2` point of `geo1` in mile
+    answers:
+      - - geodist geo1 p1 p2 mi
+        - geodist geo1 p2 p1 mi
+  - question: Get the points of `geo1` located within 30 km radius from the lat `1` and long `2e`
+    answers: georadius geo1 2 1 30 km
+  - question: Get the points and the distance of `geo1` located within 30 km radius from the lat `1` and long `2`
+    answers: georadius geo1 2 1 30 km withdist
+  - question: |
+      Get the point within `geo1` 
+
+      1. furthest away from the coordinate lat `1` and long `2`
+      2. located within `30` km radius
+      3. With distance
+
+    answers:
+      text: georadius geo1 2 1 30 km count 1 desc withdist
+      explanation: Desc sorts the result in descending order, and count 1 limits to return only 1 result
+  - question: |
+      Get the point within `geo1` 
+
+      1. closest to the coordinate lat `1` and long `2`
+      2. located within `30` km radius
+      3. With distance
+
+    answers:
+      text: georadius geo1 2 1 30 km count 1 asc withdist
+  - question: |
+      Get the points within `geo1` 
+
+      1. located within `30` km radius
+      2. from the point `p1`
+      3. With coordinate
+    answers: georadiusbymember geo1 p1 30 km withcoord
+  - question: Which of the following data can be stored in a destination geospatial set ?
+    answers:
+      - 0
+      - 1
+    options:
+      - Storing of geohash
+      - Storing of distance
+      - Storing of coordinates
+      - Storing of points
