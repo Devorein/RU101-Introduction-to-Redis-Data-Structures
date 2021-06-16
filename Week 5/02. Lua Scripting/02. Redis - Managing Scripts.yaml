@@ -1,0 +1,55 @@
+topic: Managing Scripts
+subject: Redis
+questions:
+  - question: Does redis execute lua script as a single atomic command ?
+    answers: 0
+    options:
+      - Yes
+      - No
+  - question: Does redis store cached compiled scripts ?
+    answers: 0
+    options:
+      - Yes
+      - No
+  - question: Which command is used to create a cached compiled script ?
+    answers: script load
+  - question: What is returned from the `script load` command ?
+    answers: 0
+    options:
+      - Hashdigest
+      - Hexdigest
+      - Binary
+      - string
+  - question: Which command is used to execute a hashed script ?
+    answers: evalsha
+  - question: Execute the script with sha `123` and pass 1 key `a`
+    answers: evalsha 123 1 a
+  - question: Which command is used to check if a script exists in the cached scripts ?
+    answers: script exists
+  - question: Check if the script with sha `123` exists ?
+    answers: script exists 123
+  - question: which of the following is the syntax of the `script exists` command ?
+    answers: 0
+    options:
+      - "`script exists sha1 [sha1...]`"
+      - "`script exists sha1`"
+  - question: Write the command to remove all hashed scripts redis has cached
+    answers: script flush
+  - question: Write the command to terminate the currently executing lua script
+    answers: script kill
+  - question: What is the default wait time for a lua script execution in seconds ?
+    answers: 5
+  - question: Does redis kill the scripts that runs longer than the execution threshold ?
+    answers: 0
+    options:
+      - No
+      - Yes
+  - question: What does redis do if the current lua script is taking longer than the execution threshold ?
+    answers:
+      - 0
+      - 1
+    options:
+      - Logs the message
+      - Starts accepting new commands, but doesn't execute them
+      - Starts executing new commands
+      - Kills the current script
