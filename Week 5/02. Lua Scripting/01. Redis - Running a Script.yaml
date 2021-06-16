@@ -1,0 +1,54 @@
+topic: Running a Script
+subject: Redis
+questions:
+  - question: Which command is used to run a lua script ?
+    answers: eval
+  - question: Which of the following is the syntax of the `eval` command ?
+    answers: 0
+    options:
+      - "`eval script numKeys key [key...] arg [arg...]`"
+      - "`eval script key [key...] arg [arg...]`"
+      - "`eval script numKeys key arg`"
+      - "`eval script key arg`"
+  - question: Which lua command is used to execute a redis command ?
+    answers:
+      - 0
+      - 1
+    options:
+      - "`redis.call`"
+      - "`redis.pcall`"
+      - "`redis.exec`"
+      - "`redis.pexec`"
+      - "`redis.run`"
+      - "`redis.prun`"
+  - question: Which of the following arrays are created within a lua script ?
+    answers:
+      - 0
+      - 1
+    options:
+      - "`KEYS`"
+      - "`ARGV`"
+      - "`ARG`"
+      - "`VALS`"
+  - question: Does redis treat a lua script as a single atomic command ?
+    answers: 0
+    options:
+      - Yes
+      - No
+  - question: Are lua arrays 0 based ?
+    answers: 0
+    options:
+      - No
+      - Yes
+  - question: Is there distinction between float and integer in Lua ?
+    answers: 0
+    options:
+      - No
+      - Yes
+  - question: Does redis truncate floats inside lua script ?
+    answers:
+      text: 0
+      explanation: Redis does this since there is no distinction between a integer and a float number
+    options:
+      - Yes
+      - No
